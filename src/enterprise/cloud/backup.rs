@@ -3,7 +3,7 @@
 //! This module provides comprehensive backup capabilities including incremental
 //! backups, full backup scheduling, verification, and point-in-time recovery.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 use std::time::{Duration, SystemTime};

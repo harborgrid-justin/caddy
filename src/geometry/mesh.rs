@@ -443,7 +443,7 @@ impl HalfEdgeMesh {
         let mut edge_map: HashMap<(usize, usize), usize> = HashMap::new();
 
         // Create half-edges and faces
-        for (face_idx, face) in mesh.faces.iter().enumerate() {
+        for (_face_idx, face) in mesh.faces.iter().enumerate() {
             let he_face_idx = he_mesh.faces.len();
             let first_he_idx = he_mesh.half_edges.len();
 

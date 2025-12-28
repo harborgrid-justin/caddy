@@ -13,7 +13,6 @@ use uuid::Uuid;
 
 use super::{
     activation::ActivationManager,
-    entitlement::EntitlementManager,
     key::{KeyValidator, LicenseKey},
     license::{License, LicenseError, LicenseFeature},
 };

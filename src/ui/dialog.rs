@@ -1,7 +1,6 @@
 /// Dialog windows for CADDY - File dialogs, settings, and modal windows
 ///
 /// Provides modal dialogs for file operations, settings, and configuration.
-
 use egui::{Window, Context, Color32, RichText};
 use super::UiState;
 use std::path::PathBuf;

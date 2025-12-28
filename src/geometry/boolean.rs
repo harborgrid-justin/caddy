@@ -4,7 +4,7 @@
 //! subtraction, and intersection operations with robust handling of edge cases.
 
 use super::mesh::{TriangleMesh, TriangleFace, Vertex};
-use super::solid::{Solid3D, BoundingBox};
+use super::solid::BoundingBox;
 use nalgebra::{Point3, Vector3};
 use serde::{Deserialize, Serialize};
 

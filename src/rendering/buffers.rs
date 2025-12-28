@@ -466,7 +466,7 @@ impl StagingBuffer {
     /// Copy data to GPU buffer
     pub fn copy_to_buffer<T: bytemuck::Pod>(
         &self,
-        device: &wgpu::Device,
+        _device: &wgpu::Device,
         queue: &wgpu::Queue,
         dst_buffer: &wgpu::Buffer,
         data: &[T],

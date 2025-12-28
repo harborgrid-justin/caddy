@@ -354,7 +354,7 @@ impl ConstraintSolver {
     }
 
     /// Perform one Newton-Raphson iteration step
-    fn newton_raphson_step(&self, equations: &mut [ConstraintEquation]) {
+    fn newton_raphson_step(&self, _equations: &mut [ConstraintEquation]) {
         // In a real implementation, this would:
         // 1. Compute the Jacobian matrix (partial derivatives)
         // 2. Solve the linear system J * delta = -residual

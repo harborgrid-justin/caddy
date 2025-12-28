@@ -170,7 +170,7 @@ impl Command for CopyCommand {
 
         // Create copies of selected entities
         for entity_id in &self.selection {
-            if let Some(entity) = context.document.get_entity(entity_id) {
+            if let Some(_entity) = context.document.get_entity(entity_id) {
                 // In real implementation, clone and transform the entity
                 let copy_data = Box::new(());
                 let new_id = context.document.add_entity(copy_data);

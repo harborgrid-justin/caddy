@@ -2,7 +2,6 @@
 ///
 /// Handles the main drawing area with mouse/keyboard interaction,
 /// grid display, crosshair cursor, and context menus.
-
 use egui::{Ui, Sense, Rect, Pos2, Vec2, Color32, Stroke, Response, Key};
 use super::{UiState, InteractionMode, theme};
 
@@ -302,7 +301,7 @@ impl Canvas {
     }
 
     /// Handle keyboard input
-    fn handle_keyboard_input(&mut self, ui: &Ui, state: &mut UiState) {
+    fn handle_keyboard_input(&mut self, ui: &Ui, _state: &mut UiState) {
         ui.input(|i| {
             // Pan with arrow keys
             let pan_speed = 10.0 / self.zoom;

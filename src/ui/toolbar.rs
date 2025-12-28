@@ -1,7 +1,6 @@
 /// Toolbars for CADDY - Drawing, Modify, and View toolbars
 ///
 /// Provides icon-based toolbars similar to AutoCAD.
-
 use egui::{Ui, Response, Vec2, Color32, Sense, Rect, Pos2, Stroke};
 use super::UiState;
 
@@ -68,7 +67,7 @@ impl ToolButton {
         let button_size = Vec2::new(48.0, 48.0);
         let (rect, response) = ui.allocate_exact_size(button_size, Sense::click());
 
-        let visuals = ui.style().interact(&response);
+        let _visuals = ui.style().interact(&response);
         let bg_color = if response.hovered() {
             Color32::from_rgb(60, 60, 60)
         } else if response.is_pointer_button_down_on() {
@@ -182,7 +181,6 @@ impl ToolButton {
             }
             ToolIcon::Move => {
                 // Draw cross with arrows
-                let arrow_size = 3.0;
                 painter.arrow(
                     Pos2::new(center.x - size / 3.0, center.y),
                     Vec2::new(size * 0.6, 0.0),

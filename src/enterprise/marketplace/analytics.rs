@@ -3,7 +3,7 @@
 //! This module provides comprehensive analytics including download tracking,
 //! usage analytics, revenue tracking, and developer dashboard metrics.
 
-use super::{MarketplaceError, Result};
+use super::Result;
 use chrono::{DateTime, Duration, Utc};
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};

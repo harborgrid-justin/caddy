@@ -10,7 +10,6 @@
 /// - Drawing canvas with mouse/keyboard input
 /// - Status bar with coordinate display
 /// - Modal dialogs (file operations, settings, etc.)
-
 pub mod app;
 pub mod window;
 pub mod toolbar;

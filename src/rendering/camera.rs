@@ -331,7 +331,7 @@ impl CameraController {
 
     /// Orbit the camera around the target
     pub fn orbit(&self, camera: &mut Camera, delta_x: f32, delta_y: f32) {
-        let distance = camera.distance();
+        let _distance = camera.distance();
         let target = camera.target();
 
         // Calculate spherical coordinates

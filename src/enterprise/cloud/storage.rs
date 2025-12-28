@@ -4,8 +4,6 @@
 //! storage providers including AWS S3, Azure Blob Storage, and Google Cloud Storage.
 
 use std::collections::HashMap;
-use std::fmt;
-use std::path::Path;
 use std::time::SystemTime;
 
 use async_trait::async_trait;

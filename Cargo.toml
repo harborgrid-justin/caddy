@@ -1,6 +1,6 @@
 [package]
 name = "caddy"
-version = "0.1.5"
+version = "0.2.0"
 edition = "2021"
 authors = ["Caddy Team"]
 description = "CADDY - Enterprise Computer-Aided Design System"
@@ -75,14 +75,44 @@ ring = "0.17"
 argon2 = "0.5"
 jsonwebtoken = "9.2"
 aes-gcm = "0.10"
+chacha20poly1305 = "0.10"
 rsa = "0.9"
 pbkdf2 = "0.12"
+hkdf = "0.12"
+scrypt = "0.11"
+x25519-dalek = { version = "2.0", features = ["static_secrets"] }
+p256 = { version = "0.13", features = ["ecdsa"] }
 cron = "0.12"
 dashmap = "5.5"
 crossbeam = "0.8"
 blake3 = "1.5"
 regex = "1.10"
 zeroize = { version = "1.7", features = ["derive"] }
+once_cell = "1.19"
+
+# Observability and tracing
+opentelemetry = "0.22"
+opentelemetry-otlp = "0.15"
+opentelemetry-jaeger = "0.21"
+opentelemetry-zipkin = "0.20"
+tracing-opentelemetry = "0.23"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# GraphQL
+async-graphql = { version = "7.0", features = ["dataloader"] }
+async-graphql-axum = "7.0"
+
+# Additional async/web dependencies
+axum = { version = "0.7", features = ["ws"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Redis for distributed rate limiting and caching
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+
+# Additional utilities
+lru = "0.12"
+moka = { version = "0.12", features = ["future"] }
 
 [dev-dependencies]
 criterion = "0.5"
