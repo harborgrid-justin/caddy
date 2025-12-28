@@ -51,6 +51,9 @@ pub mod constraints;
 // Plugin system
 pub mod plugins;
 
+// Enterprise features
+pub mod enterprise;
+
 // Re-export commonly used types
 pub use core::{
     color::Color,
