@@ -1,0 +1,573 @@
+    Blocking waiting for file lock on build directory
+   Compiling caddy v0.1.0 (/home/user/caddy)
+error[E0107]: missing generics for type alias `nalgebra::Point3`
+   --> src/geometry/surface.rs:498:28
+    |
+498 |         let mut numerator: Point3 = Point3::origin();
+    |                            ^^^^^^ expected 1 generic argument
+    |
+note: type alias defined here, with 1 generic parameter: `T`
+   --> /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/nalgebra-0.32.6/src/geometry/point_alias.rs:18:10
+    |
+ 18 | pub type Point3<T> = Point<T, 3>;
+    |          ^^^^^^ -
+help: add missing generic argument
+    |
+498 |         let mut numerator: Point3<T> = Point3::origin();
+    |                                  +++
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:103:59
+    |
+103 |             if i.consume_shortcut(&StandardShortcuts::NEW.into()) {
+    |                                                           ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+103 |             if i.consume_shortcut(&(&StandardShortcuts::NEW).into()) {
+    |                                    ++                      +
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:106:60
+    |
+106 |             if i.consume_shortcut(&StandardShortcuts::OPEN.into()) {
+    |                                                            ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+106 |             if i.consume_shortcut(&(&StandardShortcuts::OPEN).into()) {
+    |                                    ++                       +
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:109:60
+    |
+109 |             if i.consume_shortcut(&StandardShortcuts::SAVE.into()) {
+    |                                                            ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+109 |             if i.consume_shortcut(&(&StandardShortcuts::SAVE).into()) {
+    |                                    ++                       +
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:112:63
+    |
+112 |             if i.consume_shortcut(&StandardShortcuts::SAVE_AS.into()) {
+    |                                                               ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+112 |             if i.consume_shortcut(&(&StandardShortcuts::SAVE_AS).into()) {
+    |                                    ++                          +
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:117:60
+    |
+117 |             if i.consume_shortcut(&StandardShortcuts::UNDO.into()) {
+    |                                                            ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+117 |             if i.consume_shortcut(&(&StandardShortcuts::UNDO).into()) {
+    |                                    ++                       +
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   --> src/ui/app.rs:120:60
+    |
+120 |             if i.consume_shortcut(&StandardShortcuts::REDO.into()) {
+    |                                                            ^^^^ the trait `Into<_>` is not implemented for `Shortcut`
+    |
+    = note: required for `Shortcut` to implement `Into<KeyboardShortcut>`
+help: consider borrowing here
+    |
+120 |             if i.consume_shortcut(&(&StandardShortcuts::REDO).into()) {
+    |                                    ++                       +
+
+error[E0599]: no method named `ellipse_stroke` found for reference `&egui::Painter` in the current scope
+   --> src/ui/toolbar.rs:164:25
+    |
+164 |                 painter.ellipse_stroke(center, Vec2::new(size / 2.0, size / 3.0), Stroke::new(2.0, color));
+    |                         ^^^^^^^^^^^^^^ method not found in `&egui::Painter`
+
+error[E0599]: no method named `ellipse_stroke` found for reference `&egui::Painter` in the current scope
+   --> src/ui/toolbar.rs:530:25
+    |
+530 |                 painter.ellipse_stroke(
+    |                 --------^^^^^^^^^^^^^^ method not found in `&egui::Painter`
+
+error[E0277]: the trait bound `dyn std::any::Any: Clone` is not satisfied
+   --> src/commands/command.rs:161:5
+    |
+159 | #[derive(Debug, Clone)]
+    |                 ----- in this derive macro expansion
+160 | pub struct Document {
+161 |     pub entities: HashMap<EntityId, Box<dyn Any>>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn std::any::Any`
+    |
+    = note: required for `Box<dyn std::any::Any>` to implement `Clone`
+    = note: 1 redundant requirement hidden
+    = note: required for `HashMap<commands::command::EntityId, Box<dyn std::any::Any>>` to implement `Clone`
+
+error[E0277]: the trait bound `dyn std::any::Any + Send: Clone` is not satisfied
+  --> src/commands/modify.rs:15:5
+   |
+10 | #[derive(Clone)]
+   |          ----- in this derive macro expansion
+...
+15 |     original_positions: HashMap<EntityId, Box<dyn Any + Send>>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn std::any::Any + Send`
+   |
+   = note: required for `Box<dyn std::any::Any + Send>` to implement `Clone`
+   = note: 1 redundant requirement hidden
+   = note: required for `HashMap<commands::command::EntityId, Box<dyn std::any::Any + Send>>` to implement `Clone`
+
+error[E0277]: the trait bound `dyn std::any::Any + Send: Clone` is not satisfied
+   --> src/commands/modify.rs:698:5
+    |
+694 | #[derive(Clone)]
+    |          ----- in this derive macro expansion
+...
+698 |     trimmed_portions: HashMap<EntityId, Box<dyn Any + Send>>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn std::any::Any + Send`
+    |
+    = note: required for `Box<dyn std::any::Any + Send>` to implement `Clone`
+    = note: 1 redundant requirement hidden
+    = note: required for `HashMap<commands::command::EntityId, Box<dyn std::any::Any + Send>>` to implement `Clone`
+
+error[E0277]: the trait bound `dyn std::any::Any + Send: Clone` is not satisfied
+  --> src/commands/edit.rs:13:5
+   |
+10 | #[derive(Clone)]
+   |          ----- in this derive macro expansion
+...
+13 |     deleted_entities: HashMap<EntityId, Box<dyn Any + Send>>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn std::any::Any + Send`
+   |
+   = note: required for `Box<dyn std::any::Any + Send>` to implement `Clone`
+   = note: 1 redundant requirement hidden
+   = note: required for `HashMap<commands::command::EntityId, Box<dyn std::any::Any + Send>>` to implement `Clone`
+
+error[E0308]: mismatched types
+  --> src/commands/edit.rs:64:58
+   |
+64 |                 self.deleted_entities.insert(*entity_id, entity);
+   |                                       ------             ^^^^^^ expected trait `std::any::Any + Send`, found trait `std::any::Any`
+   |                                       |
+   |                                       arguments to this method are incorrect
+   |
+   = note: expected struct `Box<(dyn std::any::Any + Send + 'static)>`
+              found struct `Box<dyn std::any::Any>`
+help: the return type of this call is `Box<dyn std::any::Any>` due to the type of the argument passed
+  --> src/commands/edit.rs:64:17
+   |
+64 |                 self.deleted_entities.insert(*entity_id, entity);
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------^
+   |                                                          |
+   |                                                          this argument influences the return type of `insert`
+note: method defined here
+  --> /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/collections/hash/map.rs:1207:12
+
+error[E0277]: the trait bound `dyn std::any::Any + Send: Clone` is not satisfied
+   --> src/commands/edit.rs:228:5
+    |
+225 | #[derive(Clone)]
+    |          ----- in this derive macro expansion
+...
+228 |     deleted_entities: HashMap<EntityId, Box<dyn Any + Send>>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn std::any::Any + Send`
+    |
+    = note: required for `Box<dyn std::any::Any + Send>` to implement `Clone`
+    = note: 1 redundant requirement hidden
+    = note: required for `HashMap<commands::command::EntityId, Box<dyn std::any::Any + Send>>` to implement `Clone`
+
+error[E0308]: mismatched types
+   --> src/commands/edit.rs:277:58
+    |
+277 |                 self.deleted_entities.insert(*entity_id, entity);
+    |                                       ------             ^^^^^^ expected trait `std::any::Any + Send`, found trait `std::any::Any`
+    |                                       |
+    |                                       arguments to this method are incorrect
+    |
+    = note: expected struct `Box<(dyn std::any::Any + Send + 'static)>`
+               found struct `Box<dyn std::any::Any>`
+help: the return type of this call is `Box<dyn std::any::Any>` due to the type of the argument passed
+   --> src/commands/edit.rs:277:17
+    |
+277 |                 self.deleted_entities.insert(*entity_id, entity);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------^
+    |                                                          |
+    |                                                          this argument influences the return type of `insert`
+note: method defined here
+   --> /rustc/ed61e7d7e242494fb7057f2657300d9e77bb4fcb/library/std/src/collections/hash/map.rs:1207:12
+
+error[E0277]: `(dyn LayerEventListener + 'static)` doesn't implement `std::fmt::Debug`
+  --> src/layers/manager.rs:21:5
+   |
+11 | #[derive(Debug, Clone, Serialize, Deserialize)]
+   |          ----- in this derive macro expansion
+...
+21 |     listeners: Vec<Box<dyn LayerEventListener>>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `std::fmt::Debug` is not implemented for `(dyn LayerEventListener + 'static)`
+   |
+   = help: the following other types implement trait `std::fmt::Debug`:
+             dyn std::any::Any + Send + Sync
+             dyn std::any::Any + Send
+             dyn std::any::Any
+             dyn tracing_core::field::Value
+             dyn wayland_backend::rs::client::ObjectData
+             dyn wayland_backend::rs::server::ClientData
+             dyn wayland_backend::rs::server::GlobalHandler<D>
+             dyn wayland_backend::rs::server::ObjectData<D>
+           and 2 others
+
+error[E0277]: the trait bound `dyn LayerEventListener: Clone` is not satisfied
+  --> src/layers/manager.rs:21:5
+   |
+11 | #[derive(Debug, Clone, Serialize, Deserialize)]
+   |                 ----- in this derive macro expansion
+...
+21 |     listeners: Vec<Box<dyn LayerEventListener>>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Clone` is not implemented for `dyn LayerEventListener`
+   |
+   = note: required for `Box<dyn LayerEventListener>` to implement `Clone`
+   = note: 1 redundant requirement hidden
+   = note: required for `std::vec::Vec<Box<dyn LayerEventListener>>` to implement `Clone`
+
+warning: unused import: `rayon::prelude`
+ --> src/geometry/mesh.rs:9:5
+  |
+9 | use rayon::prelude::*;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `Solid3D`
+ --> src/geometry/boolean.rs:7:20
+  |
+7 | use super::solid::{Solid3D, BoundingBox};
+  |                    ^^^^^^^
+
+warning: unused variable: `face_idx`
+   --> src/geometry/mesh.rs:446:14
+    |
+446 |         for (face_idx, face) in mesh.faces.iter().enumerate() {
+    |              ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_face_idx`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+error[E0594]: cannot assign to data in an `Arc`
+   --> src/rendering/renderer.rs:302:13
+    |
+302 |             self.context.surface_config.width = width;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ cannot assign
+    |
+    = help: trait `DerefMut` is required to modify through a dereference, but it is not implemented for `std::sync::Arc<RenderContext>`
+
+error[E0594]: cannot assign to data in an `Arc`
+   --> src/rendering/renderer.rs:303:13
+    |
+303 |             self.context.surface_config.height = height;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ cannot assign
+    |
+    = help: trait `DerefMut` is required to modify through a dereference, but it is not implemented for `std::sync::Arc<RenderContext>`
+
+error[E0596]: cannot borrow data in a `&` reference as mutable
+   --> src/rendering/renderer.rs:465:29
+    |
+465 |             let view_proj = viewport.camera().view_projection_matrix();
+    |                             ^^^^^^^^^^^^^^^^^ cannot borrow as mutable
+
+warning: unused variable: `distance`
+   --> src/rendering/camera.rs:334:13
+    |
+334 |         let distance = camera.distance();
+    |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_distance`
+
+warning: unused variable: `device`
+   --> src/rendering/buffers.rs:469:9
+    |
+469 |         device: &wgpu::Device,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_device`
+
+warning: unused variable: `frame`
+   --> src/ui/app.rs:246:41
+    |
+246 |     fn update(&mut self, ctx: &Context, frame: &mut eframe::Frame) {
+    |                                         ^^^^^ help: if this is intentional, prefix it with an underscore: `_frame`
+
+warning: unused variable: `visuals`
+  --> src/ui/toolbar.rs:71:13
+   |
+71 |         let visuals = ui.style().interact(&response);
+   |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_visuals`
+
+error[E0499]: cannot borrow `*self` as mutable more than once at a time
+   --> src/ui/panel.rs:354:31
+    |
+348 |             for layer in &mut self.layers {
+    |                          ----------------
+    |                          |
+    |                          first mutable borrow occurs here
+    |                          first borrow later used here
+...
+354 |                 ui.horizontal(|ui| {
+    |                               ^^^^ second mutable borrow occurs here
+...
+365 |                         self.set_current(&layer.name);
+    |                         ---- second borrow occurs due to use of `*self` in closure
+
+error[E0500]: closure requires unique access to `self.open` but it is already borrowed
+   --> src/ui/dialog.rs:134:24
+    |
+129 |             .open(&mut self.open)
+    |                   -------------- borrow occurs here
+...
+134 |             .show(ctx, |ui| {
+    |              ----      ^^^^ closure construction occurs here
+    |              |
+    |              first borrow later used by call
+...
+225 |                                 self.open = false;
+    |                                 --------- second borrow occurs due to use of `self.open` in closure
+
+error[E0500]: closure requires unique access to `self.open` but it is already borrowed
+   --> src/ui/dialog.rs:284:24
+    |
+280 |             .open(&mut self.open)
+    |                   -------------- borrow occurs here
+...
+284 |             .show(ctx, |ui| {
+    |              ----      ^^^^ closure construction occurs here
+    |              |
+    |              first borrow later used by call
+...
+355 |                             self.open = false;
+    |                             --------- second borrow occurs due to use of `self.open` in closure
+
+error[E0500]: closure requires unique access to `self.open` but it is already borrowed
+   --> src/ui/dialog.rs:436:24
+    |
+432 |             .open(&mut self.open)
+    |                   -------------- borrow occurs here
+...
+436 |             .show(ctx, |ui| {
+    |              ----      ^^^^ closure construction occurs here
+    |              |
+    |              first borrow later used by call
+...
+478 |                         self.open = false;
+    |                         --------- second borrow occurs due to use of `self.open` in closure
+
+error[E0500]: closure requires unique access to `self.open` but it is already borrowed
+   --> src/ui/dialog.rs:533:24
+    |
+529 |             .open(&mut self.open)
+    |                   -------------- borrow occurs here
+...
+533 |             .show(ctx, |ui| {
+    |              ----      ^^^^ closure construction occurs here
+    |              |
+    |              first borrow later used by call
+...
+602 |                             self.open = false;
+    |                             --------- second borrow occurs due to use of `self.open` in closure
+
+error[E0500]: closure requires unique access to `self.open` but it is already borrowed
+   --> src/ui/dialog.rs:649:24
+    |
+645 |             .open(&mut self.open)
+    |                   -------------- borrow occurs here
+...
+649 |             .show(ctx, |ui| {
+    |              ----      ^^^^ closure construction occurs here
+    |              |
+    |              first borrow later used by call
+...
+666 |                         self.open = false;
+    |                         --------- second borrow occurs due to use of `self.open` in closure
+
+warning: unused variable: `state`
+   --> src/ui/canvas.rs:305:50
+    |
+305 |     fn handle_keyboard_input(&mut self, ui: &Ui, state: &mut UiState) {
+    |                                                  ^^^^^ help: if this is intentional, prefix it with an underscore: `_state`
+
+warning: value assigned to `current_x` is never read
+   --> src/io/import.rs:378:17
+    |
+378 |         let mut current_x = 0.0;
+    |                 ^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: value assigned to `current_y` is never read
+   --> src/io/import.rs:379:17
+    |
+379 |         let mut current_y = 0.0;
+    |                 ^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+
+warning: unused variable: `entity`
+   --> src/commands/modify.rs:174:25
+    |
+174 |             if let Some(entity) = context.document.get_entity(entity_id) {
+    |                         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_entity`
+
+error[E0502]: cannot borrow `*self` as mutable because it is also borrowed as immutable
+   --> src/tools/snap.rs:254:13
+    |
+254 |             self.generate_snap_points(entity, &self.mode);
+    |             ^^^^^--------------------^^^^^^^^^----------^
+    |             |    |                            |
+    |             |    |                            immutable borrow occurs here
+    |             |    immutable borrow later used by call
+    |             mutable borrow occurs here
+
+warning: value assigned to `spacing` is never read
+  --> src/tools/grid.rs:89:17
+   |
+89 |         let mut spacing = base_spacing;
+   |                 ^^^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: unused variable: `tolerance`
+   --> src/constraints/geometric.rs:210:32
+    |
+210 |     pub fn is_satisfied(&self, tolerance: f64) -> bool {
+    |                                ^^^^^^^^^
+    |
+help: if this is intentional, prefix it with an underscore
+    |
+210 |     pub fn is_satisfied(&self, _tolerance: f64) -> bool {
+    |                                +
+help: you might have meant to pattern match on the similarly named constant `EPSILON`
+    |
+210 -     pub fn is_satisfied(&self, tolerance: f64) -> bool {
+210 +     pub fn is_satisfied(&self, geometry::boolean::BSPPlane::classify_point::EPSILON: f64) -> bool {
+    |
+
+warning: variable does not need to be mutable
+   --> src/constraints/solver.rs:328:17
+    |
+328 |             let mut eq = ConstraintEquation::new(constraint.id);
+    |                 ----^^
+    |                 |
+    |                 help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/constraints/solver.rs:339:17
+    |
+339 |             let mut eq = ConstraintEquation::new(constraint.id);
+    |                 ----^^
+    |                 |
+    |                 help: remove this `mut`
+
+warning: unused variable: `equations`
+   --> src/constraints/solver.rs:357:35
+    |
+357 |     fn newton_raphson_step(&self, equations: &mut [ConstraintEquation]) {
+    |                                   ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_equations`
+
+Some errors have detailed explanations: E0107, E0277, E0308, E0499, E0500, E0502, E0594, E0596, E0599.
+For more information about an error, try `rustc --explain E0107`.
+warning: `caddy` (lib) generated 16 warnings
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+
+=== BUILD ATTEMPT #3 at 2025-12-28 17:36:21 ===
+
+   Compiling caddy v0.1.0 (/home/user/caddy)
+error[E0107]: missing generics for type alias `nalgebra::Point3`
+   --> src/geometry/surface.rs:498:28
+
+error[E0277]: the trait bound `Shortcut: Into<_>` is not satisfied
+   (7 shortcut errors in ui/app.rs)
+
+error[E0599]: no method named `ellipse_stroke` found
+   (2 ellipse_stroke errors in ui/toolbar.rs)
+
+error[E0277]: the trait bound `dyn std::any::Any: Clone` is not satisfied
+error[E0277]: the trait bound `dyn std::any::Any + Send: Clone` is not satisfied
+   (Multiple Clone trait errors in commands modules)
+
+error[E0277]: `(dyn LayerEventListener + 'static)` doesn't implement `std::fmt::Debug`
+error[E0277]: the trait bound `dyn LayerEventListener: Clone` is not satisfied
+
+error[E0594]: cannot assign to data in an `Arc`
+   (2 errors in rendering/renderer.rs)
+
+error[E0596]: cannot borrow data in a `&` reference as mutable
+
+error[E0499]: cannot borrow `*self` as mutable more than once at a time
+
+error[E0500]: closure requires unique access to `self.open`
+   (5 errors in ui/dialog.rs)
+
+error[E0502]: cannot borrow `*self` as mutable because it is also borrowed as immutable
+
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+
+=== END BUILD #3 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
+=== BUILD ATTEMPT #4 at 2025-12-28 17:37:11 ===
+
+   Compiling caddy v0.1.0 (/home/user/caddy)
+[Same 28 errors as Build #3]
+
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+
+=== END BUILD #4 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
+=== BUILD ATTEMPT #5 at 2025-12-28 17:38:04 ===
+
+   Compiling caddy v0.1.0 (/home/user/caddy)
+[Same 28 errors as previous builds]
+
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+
+=== END BUILD #5 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
+=== BUILD ATTEMPT #6 at 2025-12-28 17:38:58 ===
+
+   Compiling caddy v0.1.0 (/home/user/caddy)
+[Same 28 errors as previous builds]
+
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+
+=== END BUILD #6 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
+=== BUILD ATTEMPT #7 at 2025-12-28 17:40:05 ===
+[Same 28 errors]
+=== END BUILD #7 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
+=== BUILD ATTEMPT #8 at 2025-12-28 17:40:59 ===
+error: could not compile `caddy` (lib) due to 28 previous errors; 16 warnings emitted
+=== END BUILD #8 ===
+ERRORS: 28
+WARNINGS: 16
+STATUS: FAILED
+
