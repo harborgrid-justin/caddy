@@ -1,6 +1,6 @@
 {
   "name": "@caddy/enterprise-sdk",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "TypeScript SDK for CADDY Enterprise Edition",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

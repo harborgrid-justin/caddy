@@ -1,4 +1,4 @@
-//! Enterprise Authentication and RBAC System for CADDY v0.1.5
+//! Enterprise Authentication and RBAC System for CADDY v0.2.5
 //!
 //! This module provides a comprehensive authentication and authorization framework including:
 //!
@@ -8,6 +8,12 @@
 //! - **Session management**: JWT-based authentication with token refresh
 //! - **Policy engine**: Attribute-based access control (ABAC) for complex authorization rules
 //! - **Multi-provider authentication**: Support for local, LDAP, OAuth2, and OIDC authentication
+//! - **OAuth 2.0 / OpenID Connect**: Full OAuth2 and OIDC implementation with PKCE
+//! - **SAML 2.0 SSO**: Enterprise single sign-on with SAML 2.0
+//! - **Multi-Factor Authentication (MFA)**: TOTP, WebAuthn, and recovery codes
+//! - **Enhanced JWT Management**: Token rotation, fingerprinting, and blacklisting
+//! - **Advanced RBAC**: Role delegation, constraints, and context-aware access control
+//! - **Cryptographic Utilities**: Password hashing, data encryption, and secure tokens
 //!
 //! # Architecture
 //!
@@ -99,13 +105,25 @@
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
 
-// Re-export all public types and functions
+// ============================================================================
+// Module Declarations
+// ============================================================================
+
+// Core authentication modules (v0.1.5)
 pub mod permission;
 pub mod role;
 pub mod user;
 pub mod session;
 pub mod policy;
 pub mod provider;
+
+// Enhanced authentication modules (v0.2.5)
+pub mod oauth2;
+pub mod saml;
+pub mod jwt;
+pub mod rbac;
+pub mod mfa;
+pub mod crypto;
 
 // Re-export commonly used types for convenience
 pub use permission::{
@@ -122,7 +140,7 @@ pub use user::{
 };
 
 pub use session::{
-    Claims, JwtManager, Session, SessionError, SessionManager,
+    Claims, JwtManager as SessionJwtManager, Session, SessionError, SessionManager,
     SessionResult, Token,
 };
 
@@ -138,6 +156,53 @@ pub use provider::{
     LocalAuthProvider, LocalProviderConfig, OAuth2AuthProvider,
     OAuth2ProviderConfig, ProviderError, ProviderResult,
     ProviderType,
+};
+
+// ============================================================================
+// v0.2.5 Enhanced Authentication Re-exports
+// ============================================================================
+
+// OAuth 2.0 / OpenID Connect
+pub use oauth2::{
+    OAuth2Client, OAuth2Config, OAuth2Error, OAuth2Result, OAuth2Token,
+    IDTokenClaims, UserInfo, PKCEChallenge,
+};
+
+// SAML 2.0
+pub use saml::{
+    SamlServiceProvider, SamlConfig, SamlError, SamlResult,
+    AuthnRequest, SamlResponse, SamlAssertion, SamlUser,
+    NameIDFormat, ResponseStatus,
+};
+
+// Enhanced JWT
+pub use jwt::{
+    JwtManager, JwtConfig, JwtError, JwtResult,
+    TokenClaims, TokenPair, ClientInfo, JwtStatistics,
+};
+
+// Advanced RBAC
+pub use rbac::{
+    RbacManager, RbacError, RbacResult,
+    Permission as RbacPermission, Role as RbacRole,
+    RoleConstraint, AccessContext, Delegation, RbacStatistics,
+};
+
+// Multi-Factor Authentication
+pub use mfa::{
+    MfaManager, MfaError, MfaResult, MfaStatus,
+    TotpConfig, TotpAlgorithm,
+    WebAuthnConfig, WebAuthnCredential, WebAuthnManager,
+    RecoveryCodeManager,
+};
+
+// Cryptographic Utilities
+pub use crypto::{
+    PasswordHasher as CryptoPasswordHasher,
+    TokenGenerator, ApiKey, DataEncryptor, EncryptedData,
+    SecureSession, CryptoError, CryptoResult,
+    constant_time_compare, hash_sha256, hash_sha512,
+    generate_fingerprint, derive_key_from_password, derive_key_hkdf,
 };
 
 /// Enterprise authentication system facade

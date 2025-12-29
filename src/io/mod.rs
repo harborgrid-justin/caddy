@@ -59,9 +59,17 @@
 pub mod document;
 pub mod units;
 pub mod dxf;
+pub mod dwg;
+pub mod step;
+pub mod iges;
+pub mod stl;
+pub mod obj;
+pub mod gltf;
 pub mod native;
 pub mod export;
 pub mod import;
+pub mod batch;
+pub mod validation;
 
 // Re-export commonly used types
 pub use document::{
@@ -79,7 +87,7 @@ pub use units::{Unit, UnitConverter, PrecisionSettings};
 pub use dxf::{DxfReader, DxfWriter, DxfVersion, DxfError, DxfResult};
 
 pub use native::{
-    NativeFormat, JsonFormat, FormatDetector, FileFormat,
+    NativeFormat, JsonFormat, FormatDetector, FileFormat as NativeFileFormat,
     BackupManager, NativeError, NativeResult,
 };
 
@@ -96,6 +104,28 @@ pub use import::{
     ImageImporter, ImageImportSettings,
     Importer, BatchImporter,
     ImportError, ImportResult,
+};
+
+pub use dwg::{DwgReader, DwgWriter, DwgVersion, DwgError, DwgResult};
+
+pub use step::{StepReader, StepWriter, ApplicationProtocol, StepError, StepResult};
+
+pub use iges::{IgesReader, IgesWriter, IgesError, IgesResult};
+
+pub use stl::{StlReader, StlWriter, StlMesh, StlTriangle, StlError, StlResult};
+
+pub use obj::{ObjReader, ObjWriter, ObjMesh, ObjMaterial, ObjError, ObjResult};
+
+pub use gltf::{GltfReader, GltfWriter, Gltf, GltfError, GltfResult};
+
+pub use batch::{
+    BatchConverter, BatchJob, BatchError, BatchResult, BatchStats,
+    ConversionResult, FileFormat,
+};
+
+pub use validation::{
+    Validator, Repairer, ValidationError, ValidationIssue, ValidationResult,
+    Severity, ValidationReport,
 };
 
 /// Prelude module for convenient imports
@@ -159,6 +189,36 @@ impl Default for FileFormatInfo {
                     description: "AutoCAD Drawing Exchange Format (R12-R2018)".to_string(),
                 },
                 FormatEntry {
+                    name: "AutoCAD DWG".to_string(),
+                    extension: "dwg".to_string(),
+                    description: "AutoCAD Drawing format (R14-R2021)".to_string(),
+                },
+                FormatEntry {
+                    name: "STEP".to_string(),
+                    extension: "step".to_string(),
+                    description: "STEP/AP214 3D solid models (ISO 10303)".to_string(),
+                },
+                FormatEntry {
+                    name: "IGES".to_string(),
+                    extension: "iges".to_string(),
+                    description: "IGES surface geometry (ANSI/US PRO/IPO-100)".to_string(),
+                },
+                FormatEntry {
+                    name: "STL".to_string(),
+                    extension: "stl".to_string(),
+                    description: "STereoLithography format for 3D printing".to_string(),
+                },
+                FormatEntry {
+                    name: "Wavefront OBJ".to_string(),
+                    extension: "obj".to_string(),
+                    description: "Wavefront OBJ 3D geometry with materials".to_string(),
+                },
+                FormatEntry {
+                    name: "glTF 2.0".to_string(),
+                    extension: "gltf".to_string(),
+                    description: "GL Transmission Format for web/AR/VR".to_string(),
+                },
+                FormatEntry {
                     name: "SVG".to_string(),
                     extension: "svg".to_string(),
                     description: "Scalable Vector Graphics".to_string(),
@@ -181,6 +241,36 @@ impl Default for FileFormatInfo {
                     description: "AutoCAD Drawing Exchange Format (R12-R2018)".to_string(),
                 },
                 FormatEntry {
+                    name: "AutoCAD DWG".to_string(),
+                    extension: "dwg".to_string(),
+                    description: "AutoCAD Drawing format (R14-R2021)".to_string(),
+                },
+                FormatEntry {
+                    name: "STEP".to_string(),
+                    extension: "step".to_string(),
+                    description: "STEP/AP214 3D solid models (ISO 10303)".to_string(),
+                },
+                FormatEntry {
+                    name: "IGES".to_string(),
+                    extension: "iges".to_string(),
+                    description: "IGES surface geometry (ANSI/US PRO/IPO-100)".to_string(),
+                },
+                FormatEntry {
+                    name: "STL Binary".to_string(),
+                    extension: "stl".to_string(),
+                    description: "STereoLithography format for 3D printing".to_string(),
+                },
+                FormatEntry {
+                    name: "Wavefront OBJ".to_string(),
+                    extension: "obj".to_string(),
+                    description: "Wavefront OBJ 3D geometry with materials".to_string(),
+                },
+                FormatEntry {
+                    name: "glTF 2.0".to_string(),
+                    extension: "gltf".to_string(),
+                    description: "GL Transmission Format for web/AR/VR".to_string(),
+                },
+                FormatEntry {
                     name: "SVG".to_string(),
                     extension: "svg".to_string(),
                     description: "Scalable Vector Graphics".to_string(),
@@ -188,12 +278,12 @@ impl Default for FileFormatInfo {
                 FormatEntry {
                     name: "PDF".to_string(),
                     extension: "pdf".to_string(),
-                    description: "Portable Document Format (requires additional dependencies)".to_string(),
+                    description: "Portable Document Format with layers".to_string(),
                 },
                 FormatEntry {
                     name: "PNG".to_string(),
                     extension: "png".to_string(),
-                    description: "Portable Network Graphics (requires rendering)".to_string(),
+                    description: "Portable Network Graphics (raster export)".to_string(),
                 },
             ],
         }
