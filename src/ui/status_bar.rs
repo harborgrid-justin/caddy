@@ -2,7 +2,6 @@
 ///
 /// Shows coordinate display, snap mode indicators, grid toggle,
 /// ortho toggle, and current layer display.
-
 use egui::{Ui, Color32, RichText};
 use super::UiState;
 

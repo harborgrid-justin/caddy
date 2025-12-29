@@ -5,7 +5,6 @@ use tokio::time::{sleep, Duration, timeout};
 use thiserror::Error;
 use uuid::Uuid;
 use chrono::Utc;
-use serde::{Deserialize, Serialize};
 
 use super::workflow::{Workflow, WorkflowStatus, WorkflowError};
 use super::step::{

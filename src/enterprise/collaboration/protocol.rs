@@ -4,7 +4,7 @@
 //! collaboration clients, including message types, serialization, and versioning.
 
 use super::{
-    CRDTOperation, Operation, PresenceUpdate, SessionId, SessionState,
+    CRDTOperation, PresenceUpdate, SessionId, SessionState,
 };
 use crate::enterprise::collaboration::operations::OperationWithMetadata;
 use serde::{Deserialize, Serialize};

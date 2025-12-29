@@ -1,7 +1,6 @@
 /// Side panels for CADDY - Properties, Layers, and Command panels
 ///
 /// Provides side panels for managing layers, viewing properties, and command history.
-
 use egui::{Ui, ScrollArea, CollapsingHeader, Color32, RichText};
 use super::UiState;
 

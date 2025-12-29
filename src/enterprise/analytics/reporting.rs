@@ -5,7 +5,7 @@
 
 use super::{Result, AnalyticsError, MetricRegistry, aggregator::*};
 use std::collections::HashMap;
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 /// Report format types
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

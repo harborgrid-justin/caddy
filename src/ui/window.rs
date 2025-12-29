@@ -1,7 +1,6 @@
 /// Main window management using winit
 ///
 /// Handles window creation, event loop, and multiple window support.
-
 use std::sync::Arc;
 use winit::{
     event::WindowEvent,

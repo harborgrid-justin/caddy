@@ -1,4 +1,4 @@
-//! # CADDY Enterprise Edition - v0.1.5
+//! # CADDY Enterprise Edition - v0.2.0
 //!
 //! Enterprise-grade features for professional CAD workflows including authentication,
 //! audit logging, cloud synchronization, real-time collaboration, and advanced integrations.
@@ -21,6 +21,9 @@
 //! - **Security & Encryption** (`security`): End-to-end encryption, at-rest encryption,
 //!   key management, secrets vault integration, and security auditing.
 //!
+//! - **Compliance & Audit** (`compliance`): GDPR, SOC 2, HIPAA compliance with immutable
+//!   audit trails, chain hashing, event classification, retention policies, and automated reporting.
+//!
 //! ### Collaboration & Integration
 //!
 //! - **Cloud Sync** (`cloud`): Multi-cloud storage integration (AWS S3, Azure Blob, GCS),
@@ -42,6 +45,23 @@
 //!
 //! - **Workflow Automation** (`workflow`): Workflow definition language, execution engine,
 //!   task scheduling, conditional branching, and external system integration.
+//!
+//! ### Performance & Caching
+//!
+//! - **Distributed Cache** (`cache`): Multi-tier caching (L1/L2/L3), distributed locking,
+//!   tag-based invalidation, pattern matching, cascade invalidation, and compression.
+//!
+//! ### High Availability & Clustering
+//!
+//! - **HA Clustering** (`cluster`): Raft consensus for distributed agreement, automatic
+//!   failover with session migration, load balancing (round-robin, least connections),
+//!   split-brain prevention with quorum, and replicated state machine.
+//!
+//! ### Event Sourcing & CQRS
+//!
+//! - **Event Sourcing** (`eventsource`): Complete event sourcing with append-only event store,
+//!   aggregates, commands, projections, snapshots, event replay/upcasting, and sagas for
+//!   long-running processes with compensation actions.
 //!
 //! ## Architecture Overview
 //!
@@ -145,6 +165,13 @@ pub mod cloud;
 /// presence awareness, chat/comments, and permission-aware drawing locks.
 pub mod collaboration;
 
+/// Enterprise real-time collaboration engine (v0.2.0)
+///
+/// Advanced real-time collaboration system with CRDTs, operational transformation,
+/// document versioning, presence tracking, synchronization protocol, conflict resolution,
+/// and room management for multi-user CAD editing.
+pub mod realtime;
+
 /// Enterprise database integration
 ///
 /// Production-grade database adapters for PostgreSQL, MySQL, SQL Server,
@@ -180,6 +207,66 @@ pub mod workflow;
 /// End-to-end encryption, at-rest encryption, key management, secrets vault
 /// integration, and comprehensive security auditing.
 pub mod security;
+
+/// Enterprise cryptographic infrastructure
+///
+/// Advanced encryption and key management including symmetric/asymmetric encryption,
+/// key derivation, digital signatures, envelope encryption, HSM integration,
+/// and zero-knowledge proofs.
+pub mod crypto;
+
+/// Enterprise compliance and audit logging (v0.2.0)
+///
+/// Comprehensive compliance system for GDPR, SOC 2, HIPAA, and other regulatory frameworks.
+/// Features immutable audit trails with cryptographic chain hashing, event classification,
+/// data retention policies, automated reporting, and real-time compliance violation detection.
+pub mod compliance;
+
+/// Enterprise distributed cache system
+///
+/// Advanced multi-tier caching with L1/L2/L3 tiers, distributed locking,
+/// sophisticated invalidation strategies, and efficient serialization.
+pub mod cache;
+
+/// Enterprise high-availability clustering
+///
+/// Complete HA clustering system with Raft consensus, automatic failover,
+/// load balancing, split-brain prevention, and distributed state replication.
+pub mod cluster;
+
+/// Multi-tenant isolation engine
+///
+/// Comprehensive multi-tenancy with tenant context management, resource isolation,
+/// data partitioning, per-tenant configuration, billing & metering, and lifecycle management.
+pub mod tenant;
+
+/// Enterprise GraphQL API infrastructure
+///
+/// Complete GraphQL implementation with schema definition, query execution,
+/// DataLoader for N+1 prevention, subscriptions, complexity analysis,
+/// federation support, and persisted queries.
+pub mod graphql;
+
+/// Event Sourcing and CQRS
+///
+/// Complete event sourcing and Command Query Responsibility Segregation (CQRS)
+/// implementation with event store, aggregates, commands, projections, snapshots,
+/// event replay, and saga/process manager support.
+pub mod eventsource;
+
+/// Distributed tracing and observability
+///
+/// Comprehensive observability stack with distributed tracing (W3C Trace Context),
+/// multi-format export (OTLP, Jaeger, Zipkin), metrics collection (Counter, Gauge, Histogram),
+/// log-to-trace correlation, intelligent sampling strategies, and performance profiling.
+pub mod tracing;
+
+/// Advanced rate limiting and throttling
+///
+/// Comprehensive rate limiting with multiple algorithms (Token Bucket, Leaky Bucket, Sliding Window, GCRA),
+/// distributed coordination via Redis, quota management (per-user, per-API-key, per-tenant),
+/// throttling policies (reject, delay, degrade, priority queue), and analytics with abuse detection.
+pub mod ratelimit;
 
 // ============================================================================
 // Common Enterprise Types & Utilities
@@ -396,7 +483,7 @@ impl Default for EnterpriseManager {
 // ============================================================================
 
 /// Enterprise module version
-pub const ENTERPRISE_VERSION: &str = "0.1.5";
+pub const ENTERPRISE_VERSION: &str = "0.2.0";
 
 /// Enterprise module build date
 pub const BUILD_DATE: &str = "2025-12-28";
@@ -455,7 +542,7 @@ mod tests {
 
     #[test]
     fn test_version_constants() {
-        assert_eq!(ENTERPRISE_VERSION, "0.1.5");
+        assert_eq!(ENTERPRISE_VERSION, "0.2.0");
         assert_eq!(MIN_CORE_VERSION, "0.1.0");
     }
 }

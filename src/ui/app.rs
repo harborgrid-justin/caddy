@@ -1,7 +1,6 @@
 /// Main CADDY application
 ///
 /// This module implements the main application state and lifecycle.
-
 use egui::Context;
 
 use super::{
@@ -258,7 +257,7 @@ impl CaddyApp {
 }
 
 impl eframe::App for CaddyApp {
-    fn update(&mut self, ctx: &Context, frame: &mut eframe::Frame) {
+    fn update(&mut self, ctx: &Context, _frame: &mut eframe::Frame) {
         self.frame_count += 1;
 
         // Handle keyboard shortcuts

@@ -207,7 +207,7 @@ impl GeometricConstraint {
     }
 
     /// Check if constraint is satisfied (stub - real check would use actual geometry)
-    pub fn is_satisfied(&self, tolerance: f64) -> bool {
+    pub fn is_satisfied(&self, _tolerance: f64) -> bool {
         // In a real implementation, this would check the actual geometry
         // For now, we'll just return true as a placeholder
         true

@@ -3,7 +3,6 @@
 //! This module provides time-series aggregation, rolling windows,
 //! and statistical functions for metrics analysis.
 
-use super::Result;
 use std::collections::VecDeque;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 

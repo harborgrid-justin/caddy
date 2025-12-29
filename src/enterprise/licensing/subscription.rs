@@ -9,7 +9,7 @@ use std::collections::HashMap;
 use thiserror::Error;
 use uuid::Uuid;
 
-use super::license::{License, LicenseType};
+use super::license::LicenseType;
 
 /// Errors that can occur with subscriptions
 #[derive(Debug, Error)]

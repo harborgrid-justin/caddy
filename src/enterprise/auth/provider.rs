@@ -7,7 +7,7 @@
 //! - OAuth2/OIDC stubs
 //! - Multi-provider authentication
 
-use super::user::{User, UserManager, UserResult};
+use super::user::UserManager;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use thiserror::Error;

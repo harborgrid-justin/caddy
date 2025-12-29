@@ -1,7 +1,6 @@
 /// Command line interface widget for CADDY
 ///
 /// AutoCAD-style command line with autocomplete, history, and coordinate parsing.
-
 use egui::{Ui, TextEdit, Color32, RichText, Key};
 use super::UiState;
 
