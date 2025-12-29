@@ -31,7 +31,7 @@ use chacha20poly1305::{
     XNonce,
 };
 use rand::{RngCore, rngs::OsRng};
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 use thiserror::Error;
 
 /// Symmetric encryption errors

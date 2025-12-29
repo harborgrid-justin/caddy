@@ -55,7 +55,7 @@ impl DxfReader {
     /// Read a DXF file
     pub fn read_file<P: AsRef<Path>>(&self, path: P) -> DxfResult<Document> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.read(reader)
     }
 
@@ -664,7 +664,7 @@ impl DxfWriter {
     /// Write a document to a DXF file
     pub fn write_file<P: AsRef<Path>>(&self, doc: &Document, path: P) -> DxfResult<()> {
         let file = File::create(path)?;
-        let writer = BufWriter::new(file);
+        let _writer = BufWriter::new(file);
         self.write(doc, writer)
     }
 
@@ -1153,7 +1153,7 @@ mod tests {
         ));
 
         let mut buffer = Vec::new();
-        let writer = DxfWriter::new(DxfVersion::R2018);
+        let _writer = DxfWriter::new(DxfVersion::R2018);
         writer.write(&doc, &mut buffer).unwrap();
 
         // Basic check that something was written

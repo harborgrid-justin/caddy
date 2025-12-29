@@ -179,13 +179,13 @@ impl IgesReader {
     /// Read an IGES file
     pub fn read_file<P: AsRef<Path>>(&self, path: P) -> IgesResult<Document> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.read(reader)
     }
 
     /// Read IGES from a buffered reader
     pub fn read<R: BufRead>(&self, reader: R) -> IgesResult<Document> {
-        let iges_file = self.parse_iges_file(reader)?;
+        let _iges_file = self.parse_iges_file(reader)?;
         self.convert_to_document(iges_file)
     }
 
@@ -576,13 +576,13 @@ mod tests {
 
     #[test]
     fn test_iges_reader_creation() {
-        let reader = IgesReader::new();
+        let _reader = IgesReader::new();
         assert!(!reader.strict_mode);
     }
 
     #[test]
     fn test_iges_writer_creation() {
-        let writer = IgesWriter::new();
+        let _writer = IgesWriter::new();
         assert_eq!(writer.units_flag, 2);
     }
 }

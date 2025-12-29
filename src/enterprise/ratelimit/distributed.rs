@@ -12,7 +12,7 @@ use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 use tokio::sync::RwLock;
 
-use super::algorithm::{Decision, RateLimitError, RateLimitResult};
+use super::algorithm::{Decision, RateLimitResult};
 
 /// Distributed rate limiter trait
 #[async_trait]

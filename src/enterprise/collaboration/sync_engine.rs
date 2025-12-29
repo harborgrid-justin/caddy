@@ -386,7 +386,7 @@ impl SyncEngine {
                 state,
                 ..
             } => {
-                self.update_sync_state(document_id, state);
+                self.update_sync_state(document_id, _state);
             }
 
             _ => {}

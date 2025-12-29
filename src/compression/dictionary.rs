@@ -287,7 +287,7 @@ impl DictionaryCompressor {
                 ));
             }
 
-            let entry = String::from_utf8_lossy(&input[pos..pos + len]).to_string();
+            let _entry = String::from_utf8_lossy(&input[pos..pos + len]).to_string();
             entries.push(entry);
             pos += len;
         }

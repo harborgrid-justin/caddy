@@ -218,7 +218,7 @@ where
 
         // Load from store
         if let Some(value) = self.store.load(key).await? {
-            let entry = CacheEntry {
+            let _entry = CacheEntry {
                 value: value.clone(),
                 created_at: Instant::now(),
                 ttl: None,
@@ -237,7 +237,7 @@ where
         self.store.save(&key, &value).await?;
 
         // Then update cache
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value,
             created_at: Instant::now(),
             ttl,
@@ -317,7 +317,7 @@ where
 
         // Load from store
         if let Some(value) = self.store.load(key).await? {
-            let entry = CacheEntry {
+            let _entry = CacheEntry {
                 value: value.clone(),
                 created_at: Instant::now(),
                 ttl: None,
@@ -333,7 +333,7 @@ where
     /// Write to cache immediately, queue for async write to store
     pub async fn put(&self, key: K, value: V, ttl: Option<Duration>) -> EnterpriseResult<()> {
         // Update cache immediately
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value: value.clone(),
             created_at: Instant::now(),
             ttl,
@@ -458,7 +458,7 @@ where
 
         // Cache miss - load from store and populate cache
         if let Some(value) = self.store.load(key).await? {
-            let entry = CacheEntry {
+            let _entry = CacheEntry {
                 value: value.clone(),
                 created_at: Instant::now(),
                 ttl,
@@ -530,7 +530,7 @@ where
                     // Trigger async refresh
                     tokio::spawn(async move {
                         if let Ok(Some(value)) = store.load(&key).await {
-                            let entry = CacheEntry {
+                            let _entry = CacheEntry {
                                 value,
                                 created_at: Instant::now(),
                                 ttl: Some(ttl),
@@ -549,7 +549,7 @@ where
 
         // Cache miss - load from store
         if let Some(value) = self.store.load(key).await? {
-            let entry = CacheEntry {
+            let _entry = CacheEntry {
                 value: value.clone(),
                 created_at: Instant::now(),
                 ttl: Some(ttl),

@@ -643,7 +643,7 @@ mod tests {
 
     #[test]
     fn test_document_creation() {
-        let doc = Document::new(
+        let _doc = Document::new(
             Uuid::new_v4(),
             "Test Doc".to_string(),
             serde_json::json!({"type": "drawing"}),

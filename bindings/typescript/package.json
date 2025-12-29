@@ -1,6 +1,6 @@
 {
   "name": "@caddy/enterprise-sdk",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "TypeScript SDK for CADDY Enterprise Edition",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,15 +21,18 @@
   "author": "Caddy Team",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.0",
-    "ws": "^8.14.0",
-    "eventemitter3": "^5.0.1"
+    "@types/react": "^19.2.7",
+    "axios": "^1.13.2",
+    "eventemitter3": "^5.0.1",
+    "react": "^19.2.3",
+    "ws": "^8.14.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
+    "@types/node": "^20.19.27",
     "@types/ws": "^8.5.0",
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
+    "@webgpu/types": "^0.1.68",
     "eslint": "^8.55.0",
     "jest": "^29.7.0",
     "typescript": "^5.3.0"

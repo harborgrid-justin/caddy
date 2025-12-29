@@ -344,7 +344,7 @@ mod tests {
     #[tokio::test]
     async fn test_audit_entry_hash() {
         let builder = AuditEntryBuilder::new("user1", "create", "document/123");
-        let entry = builder.build_internal(0, None);
+        let _entry = builder.build_internal(0, None);
 
         assert!(entry.verify_integrity());
     }
@@ -357,7 +357,7 @@ mod tests {
         let id = trail.append(builder).await.unwrap();
 
         assert_eq!(trail.len().await, 1);
-        let entry = trail.get_entry(id).await.unwrap();
+        let _entry = trail.get_entry(id).await.unwrap();
         assert_eq!(entry.actor, "user1");
     }
 

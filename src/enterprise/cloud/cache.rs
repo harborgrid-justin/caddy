@@ -336,7 +336,7 @@ impl<S: CloudStorage + Send + Sync + 'static> CloudCache<S> {
         drop(config);
 
         // Create cache entry
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             key: key.to_string(),
             cache_path,
             metadata,

@@ -6,12 +6,12 @@
 //! - Pub/sub change notifications for distributed coordination
 //! - Cascade invalidation for dependency tracking
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 use std::fmt::Debug;
 use std::hash::Hash;
 use std::sync::Arc;
 use std::time::Instant;
-use async_trait::async_trait;
+
 use dashmap::DashMap;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
@@ -108,7 +108,7 @@ where
         }
 
         // Insert entry
-        let entry = TaggedEntry {
+        let _entry = TaggedEntry {
             value,
             tags,
             dependencies: HashSet::new(),
@@ -385,7 +385,7 @@ where
     /// Insert an entry with dependencies
     pub fn insert(&self, key: K, value: V, depends_on: HashSet<K>) {
         // Create entry
-        let entry = TaggedEntry {
+        let _entry = TaggedEntry {
             value,
             tags: HashSet::new(),
             dependencies: depends_on.clone(),

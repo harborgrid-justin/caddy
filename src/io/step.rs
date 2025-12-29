@@ -165,7 +165,7 @@ impl StepReader {
     /// Read a STEP file
     pub fn read_file<P: AsRef<Path>>(&self, path: P) -> StepResult<Document> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.read(reader)
     }
 
@@ -174,10 +174,10 @@ impl StepReader {
         let mut parser = StepParser::new(reader);
 
         // Parse header section
-        let header = parser.parse_header()?;
+        let _header = parser.parse_header()?;
 
         // Parse data section
-        let entities = parser.parse_data()?;
+        let _entities = parser.parse_data()?;
 
         // Convert to document
         self.convert_to_document(header, entities)
@@ -549,7 +549,7 @@ mod tests {
 
     #[test]
     fn test_step_reader_creation() {
-        let reader = StepReader::new();
+        let _reader = StepReader::new();
         assert_eq!(reader.tolerance, 1e-6);
     }
 }

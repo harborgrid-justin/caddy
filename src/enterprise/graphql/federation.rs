@@ -4,7 +4,7 @@
 //! and gateway support for distributed GraphQL architectures.
 
 use super::schema::{
-    Directive, Field, FieldResolver, ObjectType, ResolverContext, Schema, TypeDefinition, TypeRef,
+    Field, ObjectType, ResolverContext, Schema, TypeDefinition, TypeRef,
     Value,
 };
 use async_trait::async_trait;
@@ -203,7 +203,7 @@ impl EntityResolverRegistry {
                 FederationError::EntityNotFound(format!("No resolver for type '{}'", typename))
             })?;
 
-            let entities = resolver.resolve_entities(ctx, reprs).await?;
+            let _entities = resolver.resolve_entities(ctx, reprs).await?;
             results.extend(entities);
         }
 

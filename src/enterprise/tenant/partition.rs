@@ -3,7 +3,7 @@
 //! Implements schema-based isolation, row-level security, encryption key separation,
 //! and cross-tenant query prevention.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::sync::Arc;
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};

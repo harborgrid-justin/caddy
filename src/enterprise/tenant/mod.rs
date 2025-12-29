@@ -52,7 +52,7 @@
 //! let result = manager.provision_tenant(request).await?;
 //!
 //! // Set tenant context for current operation
-//! let context = TenantContext::new(tenant_id.clone());
+//! let _context = TenantContext::new(tenant_id.clone());
 //! manager.set_context(context)?;
 //!
 //! // All operations now automatically isolated to this tenant
@@ -417,7 +417,7 @@ mod tests {
         assert_eq!(result.tenant_info.state, TenantState::Active);
 
         // Set context
-        let context = TenantContext::new(tenant_id.clone());
+        let _context = TenantContext::new(tenant_id.clone());
         manager.set_context(context).unwrap();
 
         // Check feature
@@ -460,14 +460,14 @@ mod tests {
         use middleware::extract_tenant_from_header;
 
         let org_id = Uuid::new_v4();
-        let header = format!("org:{}", org_id);
+        let _header = format!("org:{}", org_id);
 
         let tenant_id = extract_tenant_from_header(&header).unwrap();
         assert_eq!(tenant_id.org_id, org_id);
         assert_eq!(tenant_id.level(), 1);
 
         let ws_id = Uuid::new_v4();
-        let header = format!("org:{}/ws:{}", org_id, ws_id);
+        let _header = format!("org:{}/ws:{}", org_id, ws_id);
 
         let tenant_id = extract_tenant_from_header(&header).unwrap();
         assert_eq!(tenant_id.level(), 2);

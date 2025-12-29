@@ -3,11 +3,11 @@
 //! Implements extrude, revolve, sweep, loft, and other operations
 //! that create 3D geometry from 2D profiles or transform existing geometry.
 
-use super::mesh::{HalfEdgeMesh, VertexHandle, FaceHandle, MeshError};
-use super::nurbs::{NurbsCurve, NurbsSurface};
-use crate::core::{Point3, Vector3, Matrix4, EPSILON};
-use nalgebra::{Matrix4 as NMatrix4, Vector3 as NVector3, UnitQuaternion, Translation3};
-use serde::{Deserialize, Serialize};
+use super::mesh::{HalfEdgeMesh, VertexHandle};
+use super::nurbs::NurbsCurve;
+use crate::core::{Point3, Vector3, EPSILON};
+use nalgebra::{Vector3 as NVector3, UnitQuaternion};
+
 use std::collections::HashMap;
 use std::f64::consts::PI;
 

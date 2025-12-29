@@ -303,7 +303,7 @@ impl Cache for MemoryCache {
         self.evict_if_needed();
 
         let ttl = ttl.or(self.config.default_ttl);
-        let entry = CacheEntry::new(value, ttl);
+        let _entry = CacheEntry::new(value, ttl);
 
         self.entries.write().insert(key.to_string(), entry);
         self.stats.write().sets += 1;

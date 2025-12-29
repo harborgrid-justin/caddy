@@ -59,13 +59,13 @@ impl StatusBar {
     pub fn show(&mut self, ui: &mut Ui, state: &mut UiState) {
         ui.horizontal(|ui| {
             // Coordinate display
-            self.show_coordinates(ui, state);
+            self.show_coordinates(ui, _state);
 
             ui.separator();
 
             // Mode indicators
             if self.show_mode_indicators {
-                self.show_mode_indicators_ui(ui, state);
+                self.show_mode_indicators_ui(ui, _state);
             }
 
             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
@@ -77,7 +77,7 @@ impl StatusBar {
                 ui.separator();
 
                 // Current layer
-                self.show_layer_indicator(ui, state);
+                self.show_layer_indicator(ui, _state);
 
                 ui.separator();
 

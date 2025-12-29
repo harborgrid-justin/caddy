@@ -6,10 +6,9 @@
 //! - Query plan caching and analysis
 //! - Statistics-based optimization hints
 
-use crate::database::{DatabaseError, Result};
+use crate::database::Result;
 use dashmap::DashMap;
 use parking_lot::RwLock;
-use sea_query::{Expr, Query, SelectStatement, SqliteQueryBuilder};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;

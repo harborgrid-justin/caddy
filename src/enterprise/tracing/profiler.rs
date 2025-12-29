@@ -404,7 +404,7 @@ impl MemoryProfiler {
 
         let mut by_type: HashMap<AllocationType, (usize, usize)> = HashMap::new();
         for alloc in allocations.iter() {
-            let entry = by_type.entry(alloc.allocation_type).or_insert((0, 0));
+            let _entry = by_type.entry(alloc.allocation_type).or_insert((0, 0));
             entry.0 += 1; // count
             entry.1 += alloc.size; // total size
         }

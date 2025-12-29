@@ -5,7 +5,7 @@
 
 use std::cell::RefCell;
 use std::sync::Arc;
-use parking_lot::RwLock;
+
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -314,7 +314,7 @@ pub mod async_context {
     pub trait TenantFutureExt: Future + Sized {
         /// Run this future with the current tenant context
         fn with_tenant_context(self) -> ContextResult<TenantFuture<Self>> {
-            let context = get_context()?;
+            let _context = get_context()?;
             Ok(TenantFuture::new(self, context))
         }
 
@@ -404,7 +404,7 @@ mod tests {
         clear_context(); // Ensure clean state
 
         let tenant_id = TenantId::new_org(Uuid::new_v4());
-        let context = TenantContext::new(tenant_id.clone());
+        let _context = TenantContext::new(tenant_id.clone());
 
         assert!(set_context(context).is_ok());
 
@@ -420,7 +420,7 @@ mod tests {
         clear_context();
 
         let tenant_id = TenantId::new_org(Uuid::new_v4());
-        let context = TenantContext::new(tenant_id.clone());
+        let _context = TenantContext::new(tenant_id.clone());
 
         {
             let _guard = ContextGuard::new(context).unwrap();
@@ -436,7 +436,7 @@ mod tests {
         clear_context();
 
         let tenant_id = TenantId::new_org(Uuid::new_v4());
-        let context = TenantContext::new(tenant_id.clone());
+        let _context = TenantContext::new(tenant_id.clone());
 
         let result = with_context(context, || {
             let ctx = get_context().unwrap();
@@ -477,7 +477,7 @@ mod tests {
         clear_context();
 
         let tenant_id = TenantId::new_org(Uuid::new_v4());
-        let context = TenantContext::new(tenant_id.clone());
+        let _context = TenantContext::new(tenant_id.clone());
 
         async fn test_async_fn() -> TenantId {
             get_tenant_id().unwrap()

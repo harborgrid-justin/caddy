@@ -647,7 +647,7 @@ mod tests {
         let manager = PermissionManager::new();
         let user1 = Uuid::new_v4();
         let user2 = Uuid::new_v4();
-        let entity = Uuid::new_v4();
+        let _entity = Uuid::new_v4();
 
         // Grant permissions to both users
         manager.grant_permission(user1, EditPermission::full_access(), None).unwrap();

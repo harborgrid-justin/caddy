@@ -5,7 +5,7 @@
 
 use std::collections::HashMap;
 use std::sync::Arc;
-use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
+use std::time::Duration;
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -618,7 +618,7 @@ mod tests {
     #[test]
     fn test_traceparent_format() {
         let ctx = SpanContext::new_root();
-        let header = ctx.to_traceparent();
+        let _header = ctx.to_traceparent();
         assert!(header.starts_with("00-"));
 
         let parsed = SpanContext::from_traceparent(&header).unwrap();
@@ -643,7 +643,7 @@ mod tests {
         let mut state = TraceState::new();
         state.insert("vendor".to_string(), "value".to_string());
 
-        let header = state.to_header();
+        let _header = state.to_header();
         assert_eq!(header, "vendor=value");
 
         let parsed = TraceState::from_header(&header);

@@ -11,13 +11,12 @@
 //! - Performance monitoring and statistics
 
 use crate::core::color::Color;
-use crate::core::math::{Matrix4, Vector2, Vector3};
-use crate::core::primitives::{BoundingBox3, Point2, Point3};
+use crate::core::math::Matrix4;
+use crate::core::primitives::{BoundingBox3, Point3};
 use crate::viewport::{ViewportError, ViewportResult};
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
-use wgpu::util::DeviceExt;
 
 /// WebGPU backend state
 pub struct WebGpuBackend {

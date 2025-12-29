@@ -5,7 +5,7 @@
 
 use crate::core::{Point3, Vector3, Point2, EPSILON};
 use serde::{Deserialize, Serialize};
-use std::f64::consts::PI;
+
 
 /// NURBS curve in 3D space
 #[derive(Debug, Clone, Serialize, Deserialize)]

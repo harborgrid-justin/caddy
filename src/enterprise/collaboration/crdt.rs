@@ -464,7 +464,7 @@ impl DocumentCRDT {
         layer: Option<Uuid>,
     ) -> LamportTimestamp {
         let timestamp = self.next_timestamp();
-        let entity = CADEntityCRDT::new(entity_id, entity_type, timestamp, layer);
+        let _entity = CADEntityCRDT::new(entity_id, entity_type, timestamp, layer);
         self.entities.insert(entity_id, entity);
         timestamp
     }
@@ -478,7 +478,7 @@ impl DocumentCRDT {
     ) -> Result<LamportTimestamp> {
         let timestamp = self.next_timestamp();
 
-        let entity = self.entities.get_mut(&entity_id).ok_or_else(|| {
+        let _entity = self.entities.get_mut(&entity_id).ok_or_else(|| {
             CollaborationError::Operation(format!("Entity not found: {}", entity_id))
         })?;
 
@@ -490,7 +490,7 @@ impl DocumentCRDT {
     pub fn delete_entity(&mut self, entity_id: Uuid) -> Result<LamportTimestamp> {
         let timestamp = self.next_timestamp();
 
-        let entity = self.entities.get_mut(&entity_id).ok_or_else(|| {
+        let _entity = self.entities.get_mut(&entity_id).ok_or_else(|| {
             CollaborationError::Operation(format!("Entity not found: {}", entity_id))
         })?;
 
@@ -639,7 +639,7 @@ impl CRDTOperation {
                 layer,
                 timestamp,
             } => {
-                let entity = CADEntityCRDT::new(*entity_id, entity_type.clone(), *timestamp, *layer);
+                let _entity = CADEntityCRDT::new(*entity_id, entity_type.clone(), *timestamp, *layer);
                 if let Some(existing) = doc.entities.get_mut(entity_id) {
                     existing.merge(&entity)?;
                 } else {

@@ -30,7 +30,7 @@ use rand::Rng;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256, Sha512};
 use thiserror::Error;
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 use base64::{Engine as _, engine::general_purpose};
 
 // ============================================================================
@@ -258,7 +258,7 @@ impl ApiKey {
 // ============================================================================
 
 /// Encrypted data container
-#[derive(Debug, Clone, Serialize, Deserialize, Zeroize, ZeroizeOnDrop)]
+#[derive(Debug, Clone, Serialize, Deserialize, Zeroize)]
 pub struct EncryptedData {
     /// Ciphertext
     pub ciphertext: Vec<u8>,

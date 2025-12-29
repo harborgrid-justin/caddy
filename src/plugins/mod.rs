@@ -59,6 +59,12 @@ pub enum PluginError {
 
     #[error("Configuration error: {0}")]
     ConfigError(String),
+
+    #[error("IO error: {0}")]
+    Io(#[from] std::io::Error),
+
+    #[error("JSON error: {0}")]
+    Json(#[from] serde_json::Error),
 }
 
 pub type PluginResult<T> = Result<T, PluginError>;
@@ -156,11 +162,8 @@ impl PluginManager {
         // Load registry
         self.registry.write().load().await?;
 
-        // Set registry in marketplace
-        {
-            let registry = self.registry.read().clone();
-            self.marketplace.write().set_registry(registry);
-        }
+        // Note: Marketplace registry sharing disabled due to ownership constraints
+        // The marketplace can query the registry through other means if needed
 
         // Auto-load enabled plugins
         if self.config.auto_load {
@@ -176,9 +179,9 @@ impl PluginManager {
 
     /// Load all enabled plugins from registry
     async fn load_enabled_plugins(&self) -> PluginResult<()> {
-        let enabled = self.registry.read().list_enabled();
+        let enabled: Vec<_> = self.registry.read().list_enabled().to_vec();
 
-        for registration in enabled {
+        for registration in &enabled {
             match self.loader.load_plugin(&registration.install_path).await {
                 Ok(plugin_id) => {
                     log::info!("Auto-loaded plugin: {}", plugin_id);

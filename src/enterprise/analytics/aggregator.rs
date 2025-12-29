@@ -37,7 +37,7 @@ impl TimeWindow {
             Self::Hour => 3600,
             Self::SixHours => 21600,
             Self::Day => 86400,
-            Self::Week => 604800,
+            Self::Week => 604_800,
             Self::Custom(secs) => *secs,
         }
     }

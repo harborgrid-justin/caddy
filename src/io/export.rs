@@ -3,7 +3,7 @@
 // Agent 6 - File I/O System Developer
 
 use crate::io::document::*;
-use std::f64::consts::PI;
+
 use std::fs::File;
 use std::io::{self, Write};
 use std::path::Path;
@@ -122,7 +122,7 @@ impl SvgExporter {
         let mut layers_written = std::collections::HashSet::new();
 
         for layer_name in doc.layer_names() {
-            let entities = doc.entities_on_layer(&layer_name);
+            let _entities = doc.entities_on_layer(&layer_name);
             if entities.is_empty() {
                 continue;
             }

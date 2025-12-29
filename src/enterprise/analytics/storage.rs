@@ -79,9 +79,9 @@ impl RetentionPolicy {
         vec![
             Self::new("raw", 3600, 1),           // 1 hour at 1s resolution
             Self::new("1min", 86400, 60),        // 1 day at 1min resolution
-            Self::new("5min", 604800, 300),      // 1 week at 5min resolution
-            Self::new("1hour", 2592000, 3600),   // 30 days at 1hour resolution
-            Self::new("1day", 31536000, 86400),  // 1 year at 1day resolution
+            Self::new("5min", 604_800, 300),      // 1 week at 5min resolution
+            Self::new("1hour", 2_592_000, 3600),   // 30 days at 1hour resolution
+            Self::new("1day", 31_536_000, 86400),  // 1 year at 1day resolution
         ]
     }
 
@@ -285,7 +285,7 @@ impl FileBackend {
             AnalyticsError::IoError(format!("Failed to open file: {}", e))
         })?;
 
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         let mut points = Vec::new();
 
         for line in reader.lines() {
@@ -432,7 +432,7 @@ impl StorageBackend for FileBackend {
 
         let mut metrics = Vec::new();
         for entry in entries {
-            let entry = entry.map_err(|e| {
+            let _entry = entry.map_err(|e| {
                 AnalyticsError::IoError(format!("Failed to read entry: {}", e))
             })?;
 

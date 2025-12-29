@@ -10,7 +10,6 @@
 //! - Hysteresis to prevent LOD popping
 //! - Performance monitoring
 
-use crate::core::math::{Vector3};
 use crate::core::primitives::{BoundingBox3, Point3};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -349,7 +348,7 @@ impl LodManager {
         // Select LOD based on strategy
         let selected_level = match self.config.strategy {
             LodStrategy::Distance { thresholds } => {
-                self.select_by_distance(distance, &thresholds, state)
+                self.select_by_distance(distance, &thresholds, _state)
             }
             LodStrategy::ScreenSpaceError { pixel_threshold } => {
                 self.select_by_screen_space(screen_size, pixel_threshold)
@@ -474,7 +473,7 @@ impl LodManager {
         screen_threshold: f32,
         state: &LodState,
     ) -> LodLevel {
-        let distance_lod = self.select_by_distance(distance, distance_thresholds, state);
+        let distance_lod = self.select_by_distance(distance, distance_thresholds, _state);
         let screen_lod = self.select_by_screen_space(screen_size, screen_threshold);
 
         // Weighted combination (take higher detail)

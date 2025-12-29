@@ -512,7 +512,7 @@ mod tests {
 
     #[test]
     fn test_correlated_log_with_context() {
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
         let log = CorrelatedLog::new(LogLevel::Info, "test")
             .with_context(&context);
 
@@ -557,7 +557,7 @@ mod tests {
     #[test]
     fn test_log_collector_set_context() {
         let collector = LogCollector::new();
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         collector.set_context(Some(context.clone()));
         assert_eq!(collector.get_context(), Some(context));
@@ -566,7 +566,7 @@ mod tests {
     #[test]
     fn test_log_collector_log() {
         let collector = LogCollector::new();
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         collector.set_context(Some(context.clone()));
         collector.log(LogLevel::Info, "test message");
@@ -674,7 +674,7 @@ mod tests {
             .with_sample_traced(true)
             .with_sample_rate(0.0);
 
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
         let traced_log = CorrelatedLog::new(LogLevel::Info, "traced")
             .with_context(&context);
         let untraced_log = CorrelatedLog::new(LogLevel::Info, "untraced");

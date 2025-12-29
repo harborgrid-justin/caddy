@@ -37,7 +37,7 @@ use p256::ecdsa::{
     signature::{Signer as EcdsaSigner, Verifier as EcdsaVerifier},
 };
 use rand::rngs::OsRng;
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 use thiserror::Error;
 use serde::{Serialize, Deserialize};
 

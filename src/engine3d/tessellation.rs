@@ -3,7 +3,7 @@
 //! Provides enterprise-grade tessellation with adaptive refinement based on
 //! curvature, screen-space error, and user-defined quality settings.
 
-use super::mesh::{HalfEdgeMesh, VertexHandle, FaceHandle};
+use super::mesh::{HalfEdgeMesh, VertexHandle};
 use super::nurbs::{NurbsSurface, NurbsCurve};
 use crate::core::{Point3, Vector3, Point2, EPSILON};
 use serde::{Deserialize, Serialize};

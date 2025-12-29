@@ -3,7 +3,7 @@
 //! Provides high-performance spatial indexing using R-tree and Octree data structures
 //! for efficient geometric queries in CAD workloads.
 
-use crate::core::primitives::{BoundingBox2, BoundingBox3, Point2, Point3};
+use crate::core::primitives::{BoundingBox2, BoundingBox3, Point3};
 use crate::database::{DatabaseError, Result};
 use parking_lot::RwLock;
 use rstar::{RTree, RTreeObject, AABB};
@@ -374,7 +374,7 @@ impl OctreeNode {
         ]));
 
         // Move existing entities to children
-        let entities = std::mem::take(&mut self.entities);
+        let _entities = std::mem::take(&mut self.entities);
         for entity in entities {
             self.insert(entity);
         }
@@ -591,7 +591,7 @@ mod tests {
     fn test_rtree_index() {
         let index = RTreeIndex::new();
 
-        let entity = SpatialEntity {
+        let _entity = SpatialEntity {
             id: 1,
             bbox: SpatialBBox::new_2d(0.0, 0.0, 10.0, 10.0),
             metadata: HashMap::new(),
@@ -609,7 +609,7 @@ mod tests {
         let config = OctreeConfig::default();
         let index = OctreeIndex::new(config);
 
-        let entity = SpatialEntity {
+        let _entity = SpatialEntity {
             id: 1,
             bbox: SpatialBBox::new_3d(0.0, 0.0, 0.0, 10.0, 10.0, 10.0),
             metadata: HashMap::new(),

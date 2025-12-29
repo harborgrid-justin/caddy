@@ -27,7 +27,7 @@ use rsa::{
 use x25519_dalek::{StaticSecret, PublicKey as X25519PublicKey};
 use sha2::Sha256;
 use rand::rngs::OsRng;
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 use thiserror::Error;
 
 use super::symmetric::{ChaCha20Poly1305Cipher, SymmetricError};
@@ -330,7 +330,7 @@ impl std::fmt::Debug for EciesKeyPair {
 }
 
 /// ECIES encrypted data
-#[derive(Debug, Clone, Zeroize, ZeroizeOnDrop)]
+#[derive(Debug, Clone, Zeroize)]
 pub struct EciesEncrypted {
     /// Ephemeral public key (32 bytes)
     pub ephemeral_public_key: [u8; 32],

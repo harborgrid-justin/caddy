@@ -490,7 +490,7 @@ impl SecurityLevel {
             SecurityLevel::Standard => Argon2Config::default(),
             SecurityLevel::High => Argon2Config::owasp_high_security(),
             SecurityLevel::Maximum => Argon2Config {
-                memory_cost: 262144,  // 256 MiB
+                memory_cost: 262_144,  // 256 MiB
                 time_cost: 5,
                 parallelism: 4,
                 key_length: 32,

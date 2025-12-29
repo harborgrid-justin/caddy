@@ -19,7 +19,7 @@
 //! ```no_run
 //! use caddy::io::native::FormatDetector;
 //!
-//! let doc = FormatDetector::load("drawing.cdy").unwrap();
+//! let _doc = FormatDetector::load("drawing.cdy").unwrap();
 //! ```
 //!
 //! ### Saving to native format
@@ -27,7 +27,7 @@
 //! use caddy::io::document::Document;
 //! use caddy::io::native::NativeFormat;
 //!
-//! let doc = Document::new();
+//! let _doc = Document::new();
 //! let format = NativeFormat::new();
 //! format.save(&doc, "drawing.cdy").unwrap();
 //! ```
@@ -37,11 +37,11 @@
 //! use caddy::io::dxf::{DxfReader, DxfWriter, DxfVersion};
 //!
 //! // Import DXF
-//! let reader = DxfReader::new();
-//! let doc = reader.read_file("drawing.dxf").unwrap();
+//! let _reader = DxfReader::new();
+//! let _doc = reader.read_file("drawing.dxf").unwrap();
 //!
 //! // Export DXF
-//! let writer = DxfWriter::new(DxfVersion::R2018);
+//! let _writer = DxfWriter::new(DxfVersion::R2018);
 //! writer.write_file(&doc, "output.dxf").unwrap();
 //! ```
 //!
@@ -50,7 +50,7 @@
 //! use caddy::io::export::{SvgExporter, SvgExportSettings};
 //! use caddy::io::document::Document;
 //!
-//! let doc = Document::new();
+//! let _doc = Document::new();
 //! let settings = SvgExportSettings::default();
 //! let exporter = SvgExporter::new(settings);
 //! exporter.export(&doc, "output.svg").unwrap();
@@ -433,7 +433,7 @@ mod tests {
 
     #[test]
     fn test_format_entry() {
-        let entry = FormatEntry {
+        let _entry = FormatEntry {
             name: "Test Format".to_string(),
             extension: "test".to_string(),
             description: "Test description".to_string(),

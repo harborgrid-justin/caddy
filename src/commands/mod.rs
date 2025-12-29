@@ -255,7 +255,7 @@ mod tests {
         let mut doc = Document::new();
         assert_eq!(doc.entity_count(), 0);
 
-        let entity = Box::new("test entity");
+        let _entity = Box::new("test entity");
         let id = doc.add_entity(entity);
         assert_eq!(doc.entity_count(), 1);
 

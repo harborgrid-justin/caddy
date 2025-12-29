@@ -7,7 +7,7 @@ use super::span::{Span, SpanKind, SpanStatus, AttributeValue};
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::time::UNIX_EPOCH;
 use tokio::sync::mpsc;
 
 /// Trait for trace exporters

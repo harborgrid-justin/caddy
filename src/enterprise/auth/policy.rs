@@ -673,7 +673,7 @@ mod tests {
 
         engine.add_policy(policy).unwrap();
 
-        let context = PolicyContext::new();
+        let _context = PolicyContext::new();
         let result = engine.evaluate(&Permission::DrawingRead, "drawing:123", &context);
 
         assert!(result.is_ok());

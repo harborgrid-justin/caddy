@@ -336,7 +336,7 @@ impl ReplicationManager {
         let mut log = self.log.write().await;
         let index = log.last_index() + 1;
 
-        let entry = LogEntry {
+        let _entry = LogEntry {
             index,
             term,
             command,
@@ -395,7 +395,7 @@ impl ReplicationManager {
         drop(state_machine);
 
         let log = self.log.read().await;
-        let entry = log.get(last_index)
+        let _entry = log.get(last_index)
             .ok_or(ReplicationError::IndexOutOfRange(last_index))?;
         let last_term = entry.term;
         drop(log);
@@ -493,7 +493,7 @@ mod tests {
     fn test_replication_log() {
         let mut log = ReplicationLog::new(1000);
 
-        let entry = LogEntry {
+        let _entry = LogEntry {
             index: 1,
             term: 1,
             command: Command {
@@ -513,7 +513,7 @@ mod tests {
         let mut log = ReplicationLog::new(1000);
 
         for i in 1..=5 {
-            let entry = LogEntry {
+            let _entry = LogEntry {
                 index: i,
                 term: 1,
                 command: Command {

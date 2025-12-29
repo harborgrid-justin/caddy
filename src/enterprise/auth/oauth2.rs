@@ -606,7 +606,7 @@ impl OAuth2Client {
         }
 
         // Decode header to get key ID
-        let header = decode_header(id_token)
+        let _header = decode_header(id_token)
             .map_err(|e| OAuth2Error::TokenValidationFailed(e.to_string()))?;
 
         // Get decoding key from JWKS

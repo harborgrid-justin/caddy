@@ -6,14 +6,14 @@
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
 use dashmap::DashMap;
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use std::collections::HashMap;
+use serde::{Deserialize, Serialize};
+
 use std::fmt::Debug;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 use uuid::Uuid;
 
-use super::store::{EventStore, StoredEvent};
+
 use crate::enterprise::error::{EnterpriseError, EnterpriseResult};
 
 /// Saga state

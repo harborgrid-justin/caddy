@@ -4,7 +4,7 @@
 use crate::enterprise::security::{SecurityError, SecurityResult, EncryptionAlgorithm};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 
 /// Encrypted data container
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -34,7 +34,7 @@ impl Drop for KeyPair {
 }
 
 /// Symmetric encryption key (zeroized on drop)
-#[derive(Clone, ZeroizeOnDrop)]
+#[derive(Clone)]
 pub struct SymmetricKey {
     #[zeroize(skip)]
     pub algorithm: EncryptionAlgorithm,

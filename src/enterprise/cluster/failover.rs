@@ -12,7 +12,7 @@ use tokio::sync::{mpsc, RwLock};
 use tokio::time;
 
 use super::config::{FailoverConfig, NodeId};
-use super::membership::{Member, MemberStatus};
+
 
 /// Failover errors
 #[derive(Error, Debug)]

@@ -89,7 +89,7 @@ export class CompressionService {
     try {
       const result = await this.compressWithAlgorithm(data, algorithm, level, options);
       compressed = result.data;
-      algorithmName = result.algorithmName;
+      algorithmName = algorithm;
     } catch (error) {
       console.error(`Compression failed with ${algorithm}:`, error);
       // Fallback to LZ4
@@ -100,7 +100,7 @@ export class CompressionService {
         options
       );
       compressed = fallback.data;
-      algorithmName = fallback.algorithmName;
+      algorithmName = CompressionAlgorithm.LZ4Custom;
     }
 
     const endTime = performance.now();
@@ -272,16 +272,28 @@ export class CompressionService {
     algorithm: CompressionAlgorithm,
     level: CompressionLevel,
     options?: CompressionOptions
-  ): Promise<{ data: Uint8Array; algorithmName: string }> {
+  ): Promise<CompressionResult> {
     // Note: In a real implementation, this would call the Rust backend
     // via WASM or native bindings. For now, we'll simulate the compression.
 
+    const startTime = performance.now();
     // This is a placeholder that would be replaced with actual WASM calls
     const compressed = await this.simulateCompression(data, algorithm, level);
+    const endTime = performance.now();
 
     return {
       data: compressed,
-      algorithmName: algorithm,
+      originalSize: data.length,
+      compressedSize: compressed.length,
+      stats: {
+        originalSize: data.length,
+        compressedSize: compressed.length,
+        ratio: compressed.length / data.length,
+        compressionTimeMs: endTime - startTime,
+        decompressionTimeMs: 0,
+        algorithm: algorithm,
+        metadata: {},
+      },
     };
   }
 
@@ -495,10 +507,12 @@ export class CompressionService {
       this.compressionCache.size > 0
     ) {
       const firstKey = this.compressionCache.keys().next().value;
-      const entry = this.compressionCache.get(firstKey);
-      if (entry) {
-        this.currentCacheSize -= entry.compressed.length;
-        this.compressionCache.delete(firstKey);
+      if (firstKey !== undefined) {
+        const entry = this.compressionCache.get(firstKey);
+        if (entry) {
+          this.currentCacheSize -= entry.compressed.length;
+          this.compressionCache.delete(firstKey);
+        }
       }
     }
 

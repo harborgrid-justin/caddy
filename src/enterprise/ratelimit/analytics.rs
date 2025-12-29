@@ -8,7 +8,7 @@
 
 use std::collections::{HashMap, VecDeque};
 use std::sync::Arc;
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::time::{Duration, SystemTime};
 use async_trait::async_trait;
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
@@ -448,11 +448,10 @@ impl AbuseDetector {
         if let Some(entry) = self.blocked.get(&identifier.to_key()) {
             if *entry.value() > SystemTime::now() {
                 return true;
-            } else {
-                // Block expired, remove it
-                drop(entry);
-                self.blocked.remove(&identifier.to_key());
             }
+            // Block expired, remove it
+            drop(entry);
+            self.blocked.remove(&identifier.to_key());
         }
         false
     }

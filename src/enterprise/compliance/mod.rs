@@ -47,7 +47,7 @@
 //! let trail = AuditTrail::new();
 //!
 //! // Append immutable entries
-//! let entry = AuditEntryBuilder::new("user1", "create", "document/123")
+//! let _entry = AuditEntryBuilder::new("user1", "create", "document/123")
 //!     .metadata("type", "CAD drawing");
 //!
 //! // trail.append(entry).await?;

@@ -73,7 +73,7 @@ impl ResourceLimits {
             max_network_bandwidth_bps: 100 * 1024 * 1024, // 100 MB/s
             max_threads: 16,
             max_file_handles: 500,
-            max_execution_time_ms: 3600_000,    // 1 hour
+            max_execution_time_ms: 3_600_000,    // 1 hour
         }
     }
 }

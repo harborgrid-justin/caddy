@@ -226,7 +226,7 @@ impl RaftNode {
         let term = persistent.current_term;
         let index = persistent.last_log_index() + 1;
 
-        let entry = LogEntry { term, index, data };
+        let _entry = LogEntry { term, index, data };
         persistent.log.push(entry.clone());
 
         log::debug!("Appended entry at index {}", index);
@@ -508,7 +508,7 @@ impl RaftNode {
         // Append new entries
         for (i, data) in entries.into_iter().enumerate() {
             let index = prev_log_index + 1 + i as u64;
-            let entry = LogEntry { term, index, data };
+            let _entry = LogEntry { term, index, data };
 
             // Remove conflicting entries
             persistent.log.retain(|e| e.index < index);
