@@ -1,0 +1,1 @@
+{"version":3,"file":"DataLineage.d.ts","sourceRoot":"","sources":["../../src/audit/DataLineage.tsx"],"names":[],"mappings":"AAKA,OAAO,KAAsC,MAAM,OAAO,CAAC;AAG3D,UAAU,gBAAgB;IACxB,cAAc,CAAC,EAAE,MAAM,CAAC;IACxB,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB;AAED,eAAO,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,CAkRlD,CAAC"}

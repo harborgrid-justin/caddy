@@ -1,0 +1,1 @@
+{"version":3,"file":"APIAnalytics.d.ts","sourceRoot":"","sources":["../../src/api-management/APIAnalytics.tsx"],"names":[],"mappings":"AAMA,OAAO,KAA8B,MAAM,OAAO,CAAC;AASnD,UAAU,iBAAiB;IACzB,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,eAAe,CAAC,EAAE,MAAM,CAAC;CAC1B;AAED,eAAO,MAAM,YAAY,EAAE,KAAK,CAAC,EAAE,CAAC,iBAAiB,CAuYpD,CAAC;AAyIF,eAAe,YAAY,CAAC"}

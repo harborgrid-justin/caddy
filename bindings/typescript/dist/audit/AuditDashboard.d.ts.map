@@ -1,0 +1,1 @@
+{"version":3,"file":"AuditDashboard.d.ts","sourceRoot":"","sources":["../../src/audit/AuditDashboard.tsx"],"names":[],"mappings":"AAKA,OAAO,KAAuC,MAAM,OAAO,CAAC;AAU5D,UAAU,mBAAmB;IAC3B,cAAc,CAAC,EAAE,MAAM,CAAC;IACxB,UAAU,CAAC,EAAE,CAAC,IAAI,EAAE,MAAM,KAAK,IAAI,CAAC;CACrC;AAED,eAAO,MAAM,cAAc,EAAE,KAAK,CAAC,EAAE,CAAC,mBAAmB,CA6MxD,CAAC"}

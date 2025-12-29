@@ -49,6 +49,7 @@ export const CompressionStats: React.FC<CompressionStatsProps> = ({
 
       return () => clearInterval(interval);
     }
+    return undefined;
   }, [refreshInterval]);
 
   const handleRefresh = () => {

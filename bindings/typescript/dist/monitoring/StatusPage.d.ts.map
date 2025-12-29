@@ -1,0 +1,1 @@
+{"version":3,"file":"StatusPage.d.ts","sourceRoot":"","sources":["../../src/monitoring/StatusPage.tsx"],"names":[],"mappings":"AAMA,OAAO,KAA8B,MAAM,OAAO,CAAC;AAGnD,UAAU,eAAe;IACvB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,OAAO,CAAC,EAAE,OAAO,CAAC;IAClB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,UAAU,EAAE,KAAK,CAAC,EAAE,CAAC,eAAe,CA+bhD,CAAC;AA0SF,eAAe,UAAU,CAAC"}

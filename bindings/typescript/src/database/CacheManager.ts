@@ -48,7 +48,7 @@ export class CacheManager {
       l2Directory: config.l2Directory ?? './cache',
       l2MaxSize: config.l2MaxSize ?? 1024 * 1024 * 100, // 100MB
       enableL3: config.enableL3 ?? false,
-      l3RedisUrl: config.l3RedisUrl ?? undefined,
+      l3RedisUrl: config.l3RedisUrl ?? '',
       enableCompression: config.enableCompression ?? false,
       compressionThreshold: config.compressionThreshold ?? 1024, // 1KB
     };

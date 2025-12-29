@@ -313,6 +313,7 @@ export function useDatabaseStats(refreshInterval) {
             const interval = setInterval(fetchStats, refreshInterval);
             return () => clearInterval(interval);
         }
+        return undefined;
     }, [fetchStats, refreshInterval]);
     return { stats, isLoading, error, refetch: fetchStats };
 }

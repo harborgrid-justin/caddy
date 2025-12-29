@@ -618,6 +618,7 @@ export function useViewportControls({
         }
       };
     }
+    return undefined;
   }, [config.enableDamping, applyDamping]);
 
   return {

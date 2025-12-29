@@ -1,0 +1,1 @@
+{"version":3,"file":"ResourceUsage.d.ts","sourceRoot":"","sources":["../../src/monitoring/ResourceUsage.tsx"],"names":[],"mappings":"AAMA,OAAO,KAA8B,MAAM,OAAO,CAAC;AAGnD,UAAU,kBAAkB;IAC1B,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,aAAa,EAAE,KAAK,CAAC,EAAE,CAAC,kBAAkB,CA+VtD,CAAC;AAwLF,eAAe,aAAa,CAAC"}
