@@ -3,8 +3,8 @@
 //! Implements edge collapse and quadric error metrics for Level-of-Detail (LOD)
 //! generation with feature preservation.
 
-use super::mesh::{HalfEdgeMesh, VertexHandle, EdgeHandle, FaceHandle, MeshError};
-use crate::core::{Point3, Vector3, Matrix4, EPSILON};
+use super::mesh::{HalfEdgeMesh, VertexHandle, EdgeHandle, MeshError};
+use crate::core::{Point3, Vector3};
 use nalgebra::{Matrix4 as NMatrix4, Vector4};
 use serde::{Deserialize, Serialize};
 use std::collections::{BinaryHeap, HashMap, HashSet};

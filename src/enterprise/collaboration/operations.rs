@@ -229,7 +229,7 @@ impl OperationTransform {
     ///
     /// Given operations op1 and op2 that were created concurrently,
     /// compute op1' and op2' such that:
-    /// apply(op1, apply(op2', state)) = apply(op2, apply(op1', state))
+    /// apply(op1, apply(op2', _state)) = apply(op2, apply(op1', state))
     pub fn transform(
         op1: &OperationWithMetadata,
         op2: &OperationWithMetadata,

@@ -198,13 +198,12 @@ impl WorkflowEngine {
                                     exec.workflow.error_message = step_result.error_message.clone();
                                     self.save_workflow(&exec.workflow).await?;
                                     break;
-                                } else {
-                                    exec.workflow.log_execution(format!(
-                                        "Step {} failed but continuing: {}",
-                                        step_index,
-                                        step_result.error_message.unwrap_or_default()
-                                    ));
                                 }
+                                exec.workflow.log_execution(format!(
+                                    "Step {} failed but continuing: {}",
+                                    step_index,
+                                    step_result.error_message.unwrap_or_default()
+                                ));
                             }
                             _ => {}
                         }
@@ -251,7 +250,7 @@ impl WorkflowEngine {
             let step_config = exec.workflow.steps[step_index].clone();
 
             // Create execution context
-            let context = StepExecutionContext {
+            let _context = StepExecutionContext {
                 workflow_id: exec.workflow.id,
                 step_id: step_config.id,
                 initiator_id: exec.workflow.context.initiator_id,
@@ -314,7 +313,6 @@ impl WorkflowEngine {
                         }
 
                         sleep(Duration::from_secs(delay)).await;
-                        continue;
                     } else {
                         return Err(EngineError::StepError(e));
                     }
@@ -334,7 +332,6 @@ impl WorkflowEngine {
                         }
 
                         sleep(Duration::from_secs(delay)).await;
-                        continue;
                     } else {
                         return Err(EngineError::Timeout);
                     }

@@ -378,7 +378,7 @@ impl Default for TrackerConfig {
     fn default() -> Self {
         Self {
             max_events_per_plugin: 10000,
-            max_global_events: 100000,
+            max_global_events: 100_000,
             retention_days: 90,
         }
     }

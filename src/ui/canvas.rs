@@ -265,7 +265,7 @@ impl Canvas {
 
             // Update cursor position in state (world coordinates)
             let world_pos = self.screen_to_world(mouse_pos, canvas_rect);
-            let snapped_pos = self.snap_to_grid(world_pos, state);
+            let snapped_pos = self.snap_to_grid(world_pos, _state);
             state.cursor_pos = (snapped_pos.x as f64, snapped_pos.y as f64);
 
             // Handle panning with middle mouse button or space + left mouse
@@ -392,7 +392,7 @@ impl Canvas {
         );
 
         // Draw grid
-        self.draw_grid(ui, canvas_rect, state);
+        self.draw_grid(ui, canvas_rect, _state);
 
         // Draw axes
         self.draw_axes(ui, canvas_rect);
@@ -406,8 +406,8 @@ impl Canvas {
         }
 
         // Handle input
-        self.handle_mouse_input(&response, canvas_rect, state);
-        self.handle_keyboard_input(ui, state);
+        self.handle_mouse_input(&response, canvas_rect, _state);
+        self.handle_keyboard_input(ui, _state);
 
         // Show context menu
         self.show_context_menu(ui);
@@ -416,7 +416,7 @@ impl Canvas {
         if let Some(mouse_pos) = self.last_mouse_pos {
             if canvas_rect.contains(mouse_pos) {
                 let world_pos = self.screen_to_world(mouse_pos, canvas_rect);
-                let snapped_pos = self.snap_to_grid(world_pos, state);
+                let snapped_pos = self.snap_to_grid(world_pos, _state);
 
                 // Draw coordinate tooltip near cursor
                 let tooltip_pos = Pos2::new(mouse_pos.x + 15.0, mouse_pos.y - 20.0);

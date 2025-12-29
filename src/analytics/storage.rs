@@ -5,7 +5,7 @@
 use super::{Result, AnalyticsError, AggregatedMetric};
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
-use chrono::{DateTime, Utc, Duration};
+use chrono::{DateTime, Utc, Duration, Datelike};
 use std::collections::HashMap;
 use parking_lot::RwLock;
 use std::sync::Arc;

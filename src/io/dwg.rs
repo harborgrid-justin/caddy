@@ -166,7 +166,7 @@ impl DwgReader {
     /// Read DWG from a reader
     pub fn read<R: Read + Seek>(&self, reader: &mut R) -> DwgResult<Document> {
         // Read file header
-        let header = self.read_header(reader)?;
+        let _header = self.read_header(reader)?;
 
         // Verify version support
         self.verify_version(&header)?;
@@ -419,13 +419,13 @@ mod tests {
 
     #[test]
     fn test_dwg_reader_creation() {
-        let reader = DwgReader::new();
+        let _reader = DwgReader::new();
         assert!(!reader.strict_mode);
     }
 
     #[test]
     fn test_dwg_writer_creation() {
-        let writer = DwgWriter::new(DwgVersion::R2018);
+        let _writer = DwgWriter::new(DwgVersion::R2018);
         assert_eq!(writer.version, DwgVersion::R2018);
     }
 }

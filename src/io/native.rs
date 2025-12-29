@@ -248,7 +248,7 @@ impl JsonFormat {
     /// Save document to JSON format
     pub fn save<P: AsRef<Path>>(&self, doc: &Document, path: P) -> NativeResult<()> {
         let file = File::create(path)?;
-        let writer = BufWriter::new(file);
+        let _writer = BufWriter::new(file);
 
         if let Some(ref callback) = self.progress_callback {
             callback(0, 100);
@@ -282,7 +282,7 @@ impl JsonFormat {
     /// Load document from JSON format
     pub fn load<P: AsRef<Path>>(&self, path: P) -> NativeResult<Document> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
 
         if let Some(ref callback) = self.progress_callback {
             callback(0, 100);
@@ -564,7 +564,7 @@ mod tests {
 
     #[test]
     fn test_native_format_roundtrip() {
-        let doc = Document::new();
+        let _doc = Document::new();
         let format = NativeFormat::new();
 
         let path = std::env::temp_dir().join("test.cdy");
@@ -577,7 +577,7 @@ mod tests {
 
     #[test]
     fn test_json_format_roundtrip() {
-        let doc = Document::new();
+        let _doc = Document::new();
         let format = JsonFormat::new();
 
         let json = format.to_string(&doc).unwrap();

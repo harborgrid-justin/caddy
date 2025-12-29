@@ -210,7 +210,7 @@ mod tests {
             .unwrap();
 
         // Add document
-        let doc = DocumentState::new(
+        let _doc = DocumentState::new(
             "test.cad".to_string(),
             "Initial content".to_string(),
             owner,

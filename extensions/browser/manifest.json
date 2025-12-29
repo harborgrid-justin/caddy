@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "CADDY - Accessibility Scanner",
+  "version": "0.3.0",
+  "description": "Enterprise-grade accessibility scanner for web developers. Real-time WCAG compliance analysis with advanced reporting.",
+  "author": "CADDY Team",
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "webNavigation",
+    "scripting",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "CADDY Accessibility Scanner"
+  },
+
+  "devtools_page": "devtools.html",
+
+  "options_page": "options.html",
+
+  "commands": {
+    "scan-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+A",
+        "mac": "Command+Shift+A"
+      },
+      "description": "Scan current page for accessibility issues"
+    },
+    "toggle-highlights": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Toggle accessibility issue highlights"
+    }
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*",
+        "icons/*",
+        "overlay.html"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "caddy-accessibility@harborgrid.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}

@@ -8,7 +8,7 @@ use std::sync::{Arc, RwLock};
 use zeroize::ZeroizeOnDrop;
 
 /// Secret value (automatically zeroized on drop)
-#[derive(Clone, ZeroizeOnDrop, Serialize, Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct SecretValue {
     #[serde(with = "hex")]
     data: Vec<u8>,
@@ -488,7 +488,7 @@ impl Vault {
 
         for i in 0..32 {
             let mut val = password_bytes[i % password_bytes.len()];
-            for _ in 0..100000 {
+            for _ in 0..100_000 {
                 val = val.wrapping_mul(251).wrapping_add(salt[i % salt.len()]);
             }
             key[i] = val;
@@ -583,7 +583,7 @@ mod tests {
     #[test]
     fn test_secret_storage() {
         let vault = Vault::new("test_password").unwrap();
-        let context = AccessContext {
+        let _context = AccessContext {
             user: "test_user".to_string(),
             roles: vec!["admin".to_string()],
             service: None,
@@ -609,7 +609,7 @@ mod tests {
     #[test]
     fn test_secret_versioning() {
         let vault = Vault::new("test_password").unwrap();
-        let context = AccessContext {
+        let _context = AccessContext {
             user: "test_user".to_string(),
             roles: vec!["admin".to_string()],
             service: None,

@@ -162,7 +162,7 @@ impl LayerStateManager {
         }
 
         let state = LayerState::from_manager(name.clone(), description, manager);
-        self.states.insert(name, state);
+        self.states.insert(name, _state);
         Ok(())
     }
 
@@ -224,7 +224,7 @@ impl LayerStateManager {
 
         if let Some(mut state) = self.states.remove(old_name) {
             state.name = new_name.clone();
-            self.states.insert(new_name, state);
+            self.states.insert(new_name, _state);
             Ok(())
         } else {
             Err(LayerStateError::StateNotFound(old_name.to_string()))
@@ -274,7 +274,7 @@ impl LayerStateManager {
             return Err(LayerStateError::StateAlreadyExists(name));
         }
 
-        self.states.insert(name.clone(), state);
+        self.states.insert(name.clone(), _state);
         Ok(name)
     }
 
@@ -290,9 +290,9 @@ impl LayerStateManager {
             .map_err(|e| LayerStateError::SerializationError(e.to_string()))?;
 
         let mut count = 0;
-        for (name, state) in imported {
+        for (name, _state) in imported {
             if overwrite || !self.states.contains_key(&name) {
-                self.states.insert(name, state);
+                self.states.insert(name, _state);
                 count += 1;
             }
         }

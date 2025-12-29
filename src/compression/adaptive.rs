@@ -12,7 +12,7 @@
 
 use super::{
     Compressor, CompressionError, CompressionLevel, CompressionStats, Result,
-    Lz4CustomCompressor, DeltaEncoder, MeshCompressor, DictionaryCompressor,
+    Lz4CustomCompressor, DeltaEncoder, DictionaryCompressor,
 };
 use serde::{Deserialize, Serialize};
 use std::time::Instant;

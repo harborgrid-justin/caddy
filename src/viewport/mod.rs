@@ -37,8 +37,8 @@ pub use renderer::{
 };
 pub use shaders::{ShaderCompiler, ShaderModule, ShaderPipeline, ShaderSource};
 
-use crate::core::math::{Matrix4, Vector2, Vector3};
-use crate::core::primitives::{BoundingBox3, Point2, Point3};
+use crate::core::math::Vector2;
+use crate::core::primitives::Point2;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use thiserror::Error;

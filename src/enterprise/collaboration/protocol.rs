@@ -436,7 +436,7 @@ impl MessageCodec {
 
     /// Calculate CRC32 checksum
     fn calculate_checksum(data: &[u8]) -> u32 {
-        let mut crc = 0xFFFFFFFF_u32;
+        let mut crc = 0xFFFF_FFFF_u32;
         for &byte in data {
             let index = ((crc ^ byte as u32) & 0xFF) as usize;
             crc = (crc >> 8) ^ Self::CRC32_TABLE[index];
@@ -453,7 +453,7 @@ impl MessageCodec {
             let mut j = 0;
             while j < 8 {
                 if crc & 1 != 0 {
-                    crc = (crc >> 1) ^ 0xEDB88320;
+                    crc = (crc >> 1) ^ 0xEDB8_8320;
                 } else {
                     crc >>= 1;
                 }

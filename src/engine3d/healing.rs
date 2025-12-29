@@ -3,8 +3,8 @@
 //! Provides robust algorithms to fix common mesh problems including
 //! degenerate faces, non-manifold edges, holes, and inconsistent normals.
 
-use super::mesh::{HalfEdgeMesh, VertexHandle, EdgeHandle, FaceHandle, MeshError};
-use crate::core::{Point3, Vector3, EPSILON};
+use super::mesh::{HalfEdgeMesh, VertexHandle, FaceHandle, MeshError};
+use crate::core::{Point3, EPSILON};
 use std::collections::{HashMap, HashSet};
 
 /// Mesh healing operations

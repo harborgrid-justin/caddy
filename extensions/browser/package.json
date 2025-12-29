@@ -1,0 +1,79 @@
+{
+  "name": "caddy-browser-extension",
+  "version": "0.3.0",
+  "description": "Enterprise-grade accessibility scanner browser extension",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "build:chrome": "npm run build && node scripts/package-chrome.js",
+    "build:firefox": "npm run build && node scripts/package-firefox.js",
+    "build:edge": "npm run build && node scripts/package-edge.js",
+    "build:all": "npm run build && npm run build:chrome && npm run build:firefox && npm run build:edge",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.254",
+    "@types/jest": "^29.5.8",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.7.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "style-loader": "^3.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions"
+  ],
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "browser-extension",
+    "chrome-extension",
+    "firefox-addon",
+    "edge-extension"
+  ],
+  "author": "CADDY Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harborgrid-justin/caddy.git",
+    "directory": "extensions/browser"
+  },
+  "bugs": {
+    "url": "https://github.com/harborgrid-justin/caddy/issues"
+  },
+  "homepage": "https://caddy.dev"
+}

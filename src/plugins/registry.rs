@@ -232,13 +232,13 @@ impl PluginRegistry {
         plugin_id: &str,
         new_manifest: PluginManifest,
     ) -> RegistryResult<()> {
+        // Validate new dependencies before getting mutable reference
+        self.validate_dependencies(&new_manifest.dependencies)?;
+
         let registration = self
             .plugins
             .get_mut(plugin_id)
             .ok_or_else(|| RegistryError::NotFound(plugin_id.to_string()))?;
-
-        // Validate new dependencies
-        self.validate_dependencies(&new_manifest.dependencies)?;
 
         registration.manifest = new_manifest;
         registration.updated_at = chrono::Utc::now();

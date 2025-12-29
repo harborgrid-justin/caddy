@@ -23,7 +23,7 @@ use hkdf::Hkdf;
 use pbkdf2::pbkdf2_hmac;
 use scrypt::{scrypt, Params as ScryptParams};
 use sha2::{Sha256, Sha512};
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 use thiserror::Error;
 
 /// KDF-specific errors
@@ -49,7 +49,7 @@ pub enum KdfError {
 pub type KdfResult<T> = Result<T, KdfError>;
 
 /// Derived key material that is zeroized on drop
-#[derive(Clone, ZeroizeOnDrop)]
+#[derive(Clone)]
 pub struct DerivedKey {
     #[zeroize(skip)]
     algorithm: String,
@@ -142,7 +142,7 @@ impl Argon2Config {
     /// OWASP recommended configuration for high security
     pub fn owasp_high_security() -> Self {
         Self {
-            memory_cost: 131072,  // 128 MiB
+            memory_cost: 131_072,  // 128 MiB
             time_cost: 4,
             parallelism: 4,
             key_length: 32,
@@ -198,7 +198,7 @@ impl ScryptConfig {
     /// High security configuration (slow)
     pub fn high_security() -> Self {
         Self {
-            log_n: 17,        // N = 2^17 = 131072
+            log_n: 17,        // N = 2^17 = 131_072
             r: 8,
             p: 1,
             key_length: 32,

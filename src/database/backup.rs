@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
-use std::time::{Duration, SystemTime};
+use std::time::Duration;
 use tokio::time::interval;
 
 /// Backup type
@@ -471,7 +471,7 @@ impl BackupManager {
     fn compress_backup(&self, path: &Path) -> Result<u64> {
         use flate2::write::GzEncoder;
         use flate2::Compression;
-        use std::io::{Read, Write};
+        use std::io::Write;
 
         let input = fs::read(path)
             .map_err(|e| DatabaseError::Backup(format!("Failed to read backup: {}", e)))?;

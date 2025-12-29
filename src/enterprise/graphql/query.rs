@@ -4,9 +4,9 @@
 //! batched execution, and comprehensive error handling.
 
 use super::schema::{
-    Field, ObjectType, ResolverContext, Schema, SchemaError, TypeRef, Value,
+    ObjectType, ResolverContext, Schema, SchemaError, TypeRef, Value,
 };
-use async_trait::async_trait;
+
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -689,7 +689,7 @@ mod tests {
     #[test]
     fn test_query_parser() {
         let parser = QueryParser::new("query { hello }");
-        let doc = parser.parse().unwrap();
+        let _doc = parser.parse().unwrap();
         assert_eq!(doc.operations.len(), 1);
     }
 
@@ -706,7 +706,7 @@ mod tests {
 
     #[test]
     fn test_query_builder() {
-        let doc = QueryBuilder::query()
+        let _doc = QueryBuilder::query()
             .field("hello")
             .field("world")
             .build();
@@ -739,7 +739,7 @@ mod tests {
         schema.set_query_type("Query");
 
         let executor = QueryExecutor::new(Arc::new(schema));
-        let doc = QueryBuilder::query().field("hello").build();
+        let _doc = QueryBuilder::query().field("hello").build();
         let ctx = ResolverContext::new("test-req");
 
         let result = executor.execute(&doc, HashMap::new(), ctx).await;

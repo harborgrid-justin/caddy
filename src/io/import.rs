@@ -61,7 +61,7 @@ impl SvgImporter {
     /// Import an SVG file
     pub fn import<P: AsRef<Path>>(&self, path: P) -> ImportResult<Document> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.import_from_reader(reader)
     }
 
@@ -618,7 +618,7 @@ mod tests {
     fn test_svg_import_line() {
         let svg = r#"<svg><line x1="0" y1="0" x2="100" y2="100" /></svg>"#;
         let importer = SvgImporter::default();
-        let doc = importer.import_from_string(svg).unwrap();
+        let _doc = importer.import_from_string(svg).unwrap();
 
         assert_eq!(doc.entities.len(), 1);
         match &doc.entities[0].geometry {
@@ -631,7 +631,7 @@ mod tests {
     fn test_svg_import_circle() {
         let svg = r#"<svg><circle cx="50" cy="50" r="25" /></svg>"#;
         let importer = SvgImporter::default();
-        let doc = importer.import_from_string(svg).unwrap();
+        let _doc = importer.import_from_string(svg).unwrap();
 
         assert_eq!(doc.entities.len(), 1);
         match &doc.entities[0].geometry {
@@ -647,7 +647,7 @@ mod tests {
     fn test_svg_import_polygon() {
         let svg = r#"<svg><polygon points="0,0 100,0 100,100 0,100" /></svg>"#;
         let importer = SvgImporter::default();
-        let doc = importer.import_from_string(svg).unwrap();
+        let _doc = importer.import_from_string(svg).unwrap();
 
         assert_eq!(doc.entities.len(), 1);
         match &doc.entities[0].geometry {

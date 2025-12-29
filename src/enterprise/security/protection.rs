@@ -630,7 +630,7 @@ mod tests {
     fn test_data_classification() {
         let protection = DataProtection::new();
         let data = "User SSN: 123-45-6789";
-        let context = HashMap::new();
+        let _context = HashMap::new();
 
         let classification = protection.classify_data(data, &context).unwrap();
         assert!(classification.sensitivity_score > 50);

@@ -5,9 +5,9 @@
 
 use super::mesh::{HalfEdgeMesh, VertexHandle, FaceHandle, MeshError};
 use crate::core::{Point3, Vector3, EPSILON};
-use nalgebra::Point3 as NPoint3;
+
 use serde::{Deserialize, Serialize};
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 /// BSP (Binary Space Partitioning) tree for CSG operations
 #[derive(Debug, Clone)]

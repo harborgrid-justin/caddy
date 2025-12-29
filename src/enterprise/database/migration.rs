@@ -346,7 +346,7 @@ impl MigrationManager {
     pub async fn initialize(&self) -> Result<(), MigrationError> {
         let conn = self.pool.acquire().await?;
 
-        let sql = r#"
+        let sql = r"
             CREATE TABLE IF NOT EXISTS __migrations (
                 id VARCHAR(255) PRIMARY KEY,
                 version INTEGER NOT NULL,
@@ -613,7 +613,7 @@ pub fn create_caddy_migrations() -> Vec<Arc<dyn Migration>> {
         "001_create_users",
         1,
         "Create users table",
-        r#"
+        r"
             CREATE TABLE users (
                 id UUID PRIMARY KEY,
                 username VARCHAR(100) NOT NULL UNIQUE,
@@ -633,7 +633,7 @@ pub fn create_caddy_migrations() -> Vec<Arc<dyn Migration>> {
         "002_create_projects",
         2,
         "Create projects table",
-        r#"
+        r"
             CREATE TABLE projects (
                 id UUID PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
@@ -653,7 +653,7 @@ pub fn create_caddy_migrations() -> Vec<Arc<dyn Migration>> {
         "003_create_documents",
         3,
         "Create documents table",
-        r#"
+        r"
             CREATE TABLE documents (
                 id UUID PRIMARY KEY,
                 project_id UUID NOT NULL REFERENCES projects(id) ON DELETE CASCADE,

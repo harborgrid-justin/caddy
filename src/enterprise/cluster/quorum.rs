@@ -10,7 +10,7 @@ use std::time::{Duration, Instant};
 use thiserror::Error;
 use tokio::sync::RwLock;
 
-use super::config::{NodeId, NodeRole};
+use super::config::NodeId;
 
 /// Quorum errors
 #[derive(Error, Debug)]

@@ -16,7 +16,7 @@ use std::time::{Duration, Instant};
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 use tokio::sync::RwLock;
-use crate::enterprise::error::{EnterpriseError, EnterpriseResult};
+use crate::enterprise::error::EnterpriseError;
 
 /// Cache tier level
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -124,7 +124,7 @@ where
             self.evict_lru().await;
         }
 
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value,
             stats: AccessStats {
                 hit_count: 0,
@@ -297,7 +297,7 @@ where
 
     /// Insert a value into the cache (starts at L3 by default)
     pub async fn insert(&self, key: K, value: V, ttl: Option<Duration>) {
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value,
             stats: AccessStats {
                 hit_count: 0,
@@ -348,7 +348,7 @@ where
 
     /// Promote entry to L2
     async fn promote_to_l2(&self, key: &K, value: &V, ttl: Option<Duration>) {
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value: value.clone(),
             stats: AccessStats {
                 hit_count: 0,

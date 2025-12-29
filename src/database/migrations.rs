@@ -4,7 +4,7 @@
 //! rollback support, and automatic migration discovery.
 
 use crate::database::{connection_pool::ConnectionPool, DatabaseError, Result};
-use chrono::{DateTime, Utc};
+use chrono::Utc;
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;

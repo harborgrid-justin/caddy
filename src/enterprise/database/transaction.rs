@@ -429,7 +429,6 @@ impl TransactionManager {
                         Err(TransactionError::SerializationFailure) if attempts < max_retries => {
                             log::warn!("Serialization failure, retrying... (attempt {})", attempts);
                             tokio::time::sleep(std::time::Duration::from_millis(10 * attempts as u64)).await;
-                            continue;
                         }
                         Err(e) => return Err(e),
                     }
@@ -440,10 +439,9 @@ impl TransactionManager {
                     if matches!(e, TransactionError::SerializationFailure) && attempts < max_retries {
                         log::warn!("Serialization failure, retrying... (attempt {})", attempts);
                         tokio::time::sleep(std::time::Duration::from_millis(10 * attempts as u64)).await;
-                        continue;
+                    } else {
+                        return Err(e);
                     }
-
-                    return Err(e);
                 }
             }
         }

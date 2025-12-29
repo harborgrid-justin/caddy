@@ -129,7 +129,7 @@ impl UsageTracker {
 
     /// Track feature usage
     pub fn track_usage(&self, feature: LicenseFeature, user_id: Option<String>) {
-        let entry = UsageEntry::new(feature, user_id);
+        let _entry = UsageEntry::new(feature, user_id);
 
         // Add to entries
         let mut entries = self.entries.write();

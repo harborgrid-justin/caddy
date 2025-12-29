@@ -588,7 +588,7 @@ mod tests {
     #[test]
     fn test_always_sampler() {
         let sampler = AlwaysSampler::new();
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::RecordAndSample);
@@ -597,7 +597,7 @@ mod tests {
     #[test]
     fn test_never_sampler() {
         let sampler = NeverSampler::new();
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::Drop);
@@ -606,7 +606,7 @@ mod tests {
     #[test]
     fn test_probability_sampler_always() {
         let sampler = ProbabilitySampler::new(1.0);
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::RecordAndSample);
@@ -615,7 +615,7 @@ mod tests {
     #[test]
     fn test_probability_sampler_never() {
         let sampler = ProbabilitySampler::new(0.0);
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::Drop);
@@ -624,7 +624,7 @@ mod tests {
     #[test]
     fn test_rate_limiting_sampler() {
         let sampler = RateLimitingSampler::new(5);
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let mut sampled = 0;
         for _ in 0..10 {
@@ -679,7 +679,7 @@ mod tests {
             .with_span_pattern("api_.*");
         sampler.add_rule(rule);
 
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
         let decision = sampler.should_sample(&context, "api_request");
         assert_eq!(decision, SamplingDecision::RecordAndSample);
     }
@@ -713,7 +713,7 @@ mod tests {
             .add_sampler(Box::new(AlwaysSampler::new()))
             .add_sampler(Box::new(AlwaysSampler::new()));
 
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::RecordAndSample);
     }
@@ -724,7 +724,7 @@ mod tests {
             .add_sampler(Box::new(AlwaysSampler::new()))
             .add_sampler(Box::new(NeverSampler::new()));
 
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::RecordAndSample);
     }
@@ -734,7 +734,7 @@ mod tests {
         let sampler = AdaptiveSampler::new(100)
             .with_bounds(0.01, 1.0);
 
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         // Just test that it runs without crashing
         for _ in 0..10 {

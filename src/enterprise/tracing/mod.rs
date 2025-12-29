@@ -243,7 +243,7 @@
 //!
 //! # fn example() -> Result<(), Box<dyn std::error::Error>> {
 //! // Create a span context
-//! let context = SpanContext::new_root();
+//! let _context = SpanContext::new_root();
 //!
 //! // Convert to W3C traceparent header
 //! let traceparent = context.to_traceparent();
@@ -554,7 +554,7 @@ mod tests {
     #[test]
     fn test_sampling_end_to_end() {
         let sampler = ProbabilitySampler::new(1.0);
-        let context = SpanContext::new_root();
+        let _context = SpanContext::new_root();
 
         let decision = sampler.should_sample(&context, "test");
         assert_eq!(decision, SamplingDecision::RecordAndSample);

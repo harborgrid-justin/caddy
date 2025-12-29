@@ -6,14 +6,12 @@
 //! - L3: Distributed Redis cache (shared across instances)
 
 use crate::database::{DatabaseError, Result};
-use lru::LruCache;
 use moka::future::Cache as MokaCache;
 use parking_lot::RwLock;
 use redis::aio::ConnectionManager;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use sled::Db as SledDb;
-use std::hash::{Hash, Hasher};
-use std::num::NonZeroUsize;
+use std::hash::Hasher;
 use std::path::PathBuf;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
@@ -317,7 +315,7 @@ impl CacheManager {
 
         let ttl_secs = ttl.unwrap_or(self.config.l1_ttl).as_secs();
 
-        let entry = CacheEntry {
+        let _entry = CacheEntry {
             value,
             created_at: std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)

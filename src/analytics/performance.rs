@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;
 use parking_lot::RwLock;
-use chrono::{DateTime, Duration, Utc};
+use chrono::{DateTime, Utc};
 use std::time::Instant;
 
 /// Performance profile span

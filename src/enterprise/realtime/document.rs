@@ -503,7 +503,7 @@ mod tests {
     #[test]
     fn test_create_document() {
         let author = Uuid::new_v4();
-        let doc = DocumentState::new(
+        let _doc = DocumentState::new(
             "test.cad".to_string(),
             "Initial content".to_string(),
             author,

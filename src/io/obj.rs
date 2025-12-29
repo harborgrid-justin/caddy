@@ -213,7 +213,7 @@ impl ObjReader {
         });
 
         let file = File::open(path_ref)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.read(reader, &base_path)
     }
 
@@ -405,7 +405,7 @@ impl ObjReader {
 
     fn load_mtl_file(&self, path: &Path) -> ObjResult<HashMap<String, ObjMaterial>> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         let mut materials = HashMap::new();
         let mut current_material: Option<ObjMaterial> = None;
 

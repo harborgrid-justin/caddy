@@ -384,7 +384,7 @@ impl BatchConverter {
         }
 
         // Load input file
-        let doc = match self.load_document(input_path, input_format) {
+        let _doc = match self.load_document(input_path, input_format) {
             Ok(doc) => doc,
             Err(e) => {
                 let duration = start_time.elapsed().as_millis() as u64;

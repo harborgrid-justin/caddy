@@ -13,8 +13,8 @@ use std::sync::Arc;
 use std::time::{Duration, Instant};
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
-use tokio::sync::{RwLock, Semaphore};
-use tokio::time::{interval, sleep, timeout};
+use tokio::sync::RwLock;
+use tokio::time::{interval, sleep};
 use uuid::Uuid;
 use crate::enterprise::error::{EnterpriseError, EnterpriseResult};
 
@@ -663,8 +663,8 @@ mod tests {
     #[tokio::test]
     async fn test_rwlock_writer_blocks_readers() {
         let rwlock = DistributedRwLock::new();
-        let writer = Uuid::new_v4();
-        let reader = Uuid::new_v4();
+        let _writer = Uuid::new_v4();
+        let _reader = Uuid::new_v4();
 
         rwlock.write_lock(1, writer, None).await.unwrap();
         assert!(rwlock.is_write_locked(&1));

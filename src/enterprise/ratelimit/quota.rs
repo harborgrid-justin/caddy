@@ -8,8 +8,8 @@
 
 use std::collections::HashMap;
 use std::sync::Arc;
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
-use async_trait::async_trait;
+use std::time::{Duration, SystemTime};
+
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 use tokio::sync::RwLock;
@@ -77,9 +77,9 @@ impl QuotaPeriod {
             Self::Minute => 60,
             Self::Hour => 3600,
             Self::Day => 86400,
-            Self::Week => 604800,
-            Self::Month => 2592000,  // 30 days
-            Self::Year => 31536000,  // 365 days
+            Self::Week => 604_800,
+            Self::Month => 2_592_000,  // 30 days
+            Self::Year => 31_536_000,  // 365 days
             Self::Custom(secs) => *secs,
         }
     }

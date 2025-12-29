@@ -438,7 +438,7 @@ impl CommandPanel {
 
     /// Add command to history
     pub fn add_command(&mut self, command: &str) {
-        let entry = CommandEntry {
+        let _entry = CommandEntry {
             command: command.to_string(),
             timestamp: Self::current_time(),
             success: true,
@@ -454,7 +454,7 @@ impl CommandPanel {
 
     /// Add failed command to history
     pub fn add_failed_command(&mut self, command: &str) {
-        let entry = CommandEntry {
+        let _entry = CommandEntry {
             command: command.to_string(),
             timestamp: Self::current_time(),
             success: false,

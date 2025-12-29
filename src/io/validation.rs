@@ -609,7 +609,7 @@ mod tests {
     #[test]
     fn test_empty_document_validation() {
         let validator = Validator::new();
-        let doc = Document::new();
+        let _doc = Document::new();
 
         let result = validator.validate(&doc);
         assert!(result.is_err());

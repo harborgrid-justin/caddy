@@ -659,7 +659,7 @@ mod tests {
         schema.set_query_type("Query");
 
         let analyzer = ComplexityAnalyzer::new(Arc::new(schema));
-        let doc = QueryBuilder::query().field("hello").build();
+        let _doc = QueryBuilder::query().field("hello").build();
 
         let analysis = analyzer.analyze(&doc).unwrap();
         assert!(analysis.total_complexity > 0.0);

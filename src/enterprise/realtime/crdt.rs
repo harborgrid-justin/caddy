@@ -60,7 +60,7 @@ impl VectorClock {
     /// Update this clock with another clock (take maximum)
     pub fn merge(&mut self, other: &VectorClock) {
         for (replica, &value) in &other.clock {
-            let entry = self.clock.entry(*replica).or_insert(0);
+            let _entry = self.clock.entry(*replica).or_insert(0);
             *entry = (*entry).max(value);
         }
     }
@@ -129,7 +129,7 @@ impl GCounter {
     /// Merge with another G-Counter
     pub fn merge(&mut self, other: &GCounter) {
         for (replica, &count) in &other.counts {
-            let entry = self.counts.entry(*replica).or_insert(0);
+            let _entry = self.counts.entry(*replica).or_insert(0);
             *entry = (*entry).max(count);
         }
     }
@@ -172,11 +172,11 @@ impl PNCounter {
     /// Merge with another PN-Counter
     pub fn merge(&mut self, other: &PNCounter) {
         for (replica, &count) in &other.positive {
-            let entry = self.positive.entry(*replica).or_insert(0);
+            let _entry = self.positive.entry(*replica).or_insert(0);
             *entry = (*entry).max(count);
         }
         for (replica, &count) in &other.negative {
-            let entry = self.negative.entry(*replica).or_insert(0);
+            let _entry = self.negative.entry(*replica).or_insert(0);
             *entry = (*entry).max(count);
         }
     }
@@ -422,7 +422,7 @@ impl<T: Clone> RGA<T> {
                         return i;
                     }
                 }
-                Ordering::Greater => continue,
+                Ordering::Greater => {},
             }
         }
         self.nodes.len()

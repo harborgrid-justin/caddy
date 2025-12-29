@@ -458,7 +458,7 @@ impl VersionControl {
         version1: &str,
         version2: &str,
     ) -> Result<String, VersionError> {
-        let versions = self.versions.read().await;
+        let versions_map = self.versions.read().await;
 
         // Build ancestry sets for both versions
         let mut ancestors1 = HashSet::new();
@@ -515,7 +515,7 @@ impl VersionControl {
 
     /// Rollback to a specific version
     pub async fn rollback(&self, version_id: &str) -> Result<(), VersionError> {
-        let versions = self.versions.read().await;
+        let versions_map = self.versions.read().await;
         if !versions.contains_key(version_id) {
             return Err(VersionError::VersionNotFound(version_id.to_string()));
         }
@@ -539,7 +539,7 @@ impl VersionControl {
             .clone();
         drop(branches);
 
-        let versions = self.versions.read().await;
+        let versions_map = self.versions.read().await;
         let mut history = Vec::new();
 
         while let Some(version) = versions.get(&current_head) {
@@ -567,7 +567,7 @@ impl VersionControl {
         from_version: &str,
         to_version: &str,
     ) -> Result<VersionDiff, VersionError> {
-        let versions = self.versions.read().await;
+        let versions_map = self.versions.read().await;
 
         let from = versions
             .get(from_version)
@@ -631,7 +631,7 @@ impl VersionControl {
         version_id: &str,
         message: &str,
     ) -> Result<(), VersionError> {
-        let versions = self.versions.read().await;
+        let versions_map = self.versions.read().await;
         if !versions.contains_key(version_id) {
             return Err(VersionError::VersionNotFound(version_id.to_string()));
         }

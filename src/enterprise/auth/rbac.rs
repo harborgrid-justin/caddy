@@ -778,7 +778,7 @@ mod tests {
         let result = manager.assign_role("user1", "designer");
         assert!(result.is_ok());
 
-        let context = AccessContext::default();
+        let _context = AccessContext::default();
         assert!(manager.has_permission(
             "user1",
             &Permission::new("drawing", "create"),
@@ -792,7 +792,7 @@ mod tests {
 
         manager.assign_role("user1", "admin").unwrap();
 
-        let context = AccessContext::default();
+        let _context = AccessContext::default();
         let permissions = vec![Permission::new("drawing", "create")]
             .into_iter()
             .collect();

@@ -5,7 +5,7 @@ use crate::enterprise::security::{SecurityError, SecurityResult};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
-use zeroize::{Zeroize, ZeroizeOnDrop};
+use zeroize::Zeroize;
 
 /// Key metadata
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -419,7 +419,7 @@ impl KeyStore {
 
         for i in 0..32 {
             let mut val = password_bytes[i % password_bytes.len()];
-            for _ in 0..100000 {
+            for _ in 0..100_000 {
                 val = val.wrapping_mul(251).wrapping_add(salt[i % salt.len()]);
             }
             key[i] = val;

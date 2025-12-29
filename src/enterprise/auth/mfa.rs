@@ -152,7 +152,7 @@ impl TotpConfig {
     }
 
     /// Verify a TOTP code
-    pub fn verify(&self, code: &str, allowed_drift: u64) -> bool {
+    pub fn verify(&self, _code: code: &str,str, allowed_drift: u64) -> bool {
         let current_time = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap()
@@ -658,7 +658,7 @@ impl MfaManager {
 
     /// Record failed authentication attempt
     fn record_failed_attempt(&mut self, user_id: &str) {
-        let entry = self.failed_attempts.entry(user_id.to_string()).or_insert((0, SystemTime::now()));
+        let _entry = self.failed_attempts.entry(user_id.to_string()).or_insert((0, SystemTime::now()));
         entry.0 += 1;
         entry.1 = SystemTime::now();
     }

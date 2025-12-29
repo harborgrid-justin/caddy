@@ -472,7 +472,7 @@ impl GltfReader {
     /// Read a glTF file
     pub fn read_file<P: AsRef<Path>>(&self, path: P) -> GltfResult<Gltf> {
         let file = File::open(path)?;
-        let reader = BufReader::new(file);
+        let _reader = BufReader::new(file);
         self.read(reader)
     }
 
@@ -545,7 +545,7 @@ impl GltfWriter {
     /// Write glTF to file
     pub fn write_file<P: AsRef<Path>>(&self, gltf: &Gltf, path: P) -> GltfResult<()> {
         let file = File::create(path)?;
-        let writer = BufWriter::new(file);
+        let _writer = BufWriter::new(file);
         self.write(gltf, writer)
     }
 
@@ -605,13 +605,13 @@ mod tests {
 
     #[test]
     fn test_gltf_reader_creation() {
-        let reader = GltfReader::new();
+        let _reader = GltfReader::new();
         assert!(reader.load_buffers);
     }
 
     #[test]
     fn test_gltf_writer_creation() {
-        let writer = GltfWriter::new();
+        let _writer = GltfWriter::new();
         assert!(writer.pretty_print);
         assert!(!writer.binary_format);
     }

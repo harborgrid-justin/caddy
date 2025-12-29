@@ -2,7 +2,7 @@
 //!
 //! Export metrics to various formats including Prometheus, OpenTelemetry, and custom formats.
 
-use super::{Result, AnalyticsError, Metric, MetricType, MetricValue, ExportEndpoint};
+use super::{Result, AnalyticsError, Metric, MetricType, ExportEndpoint};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use chrono::{DateTime, Utc};

@@ -2,7 +2,7 @@
 //!
 //! Aggregates metrics over time windows for efficient querying and visualization.
 
-use super::{Metric, MetricType, MetricValue, Result, AnalyticsError};
+use super::{Metric, Result, AnalyticsError};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use chrono::{DateTime, Duration, Utc};

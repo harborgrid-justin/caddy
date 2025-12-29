@@ -13,7 +13,6 @@
 use super::{Compressor, CompressionError, CompressionLevel, CompressionStats, Result};
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
-use std::sync::Arc;
 use std::time::Instant;
 
 /// Parallel compression configuration

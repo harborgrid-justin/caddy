@@ -123,7 +123,7 @@ impl Default for JwtConfig {
             ecdsa_public_key: None,
             algorithm: Algorithm::HS256,
             access_token_ttl: 900,      // 15 minutes
-            refresh_token_ttl: 604800,  // 7 days
+            refresh_token_ttl: 604_800,  // 7 days
             issuer: "caddy-auth".to_string(),
             audience: "caddy-api".to_string(),
             enable_fingerprinting: true,
@@ -414,7 +414,7 @@ impl JwtManager {
             .insert(refresh_claims.jti.clone(), refresh_claims.clone());
 
         // Encode tokens
-        let header = Header::new(self.config.algorithm);
+        let _header = Header::new(self.config.algorithm);
 
         let access_token = encode(&header, &access_claims, &self.encoding_key)
             .map_err(|e| JwtError::CreationFailed(e.to_string()))?;

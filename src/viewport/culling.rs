@@ -9,10 +9,9 @@
 //! - Hierarchical culling for complex scenes
 //! - Bounding volume tests (AABB, OBB, spheres)
 
-use crate::core::math::{Matrix4, Vector3, Vector4};
-use crate::core::primitives::{BoundingBox3, Point3, Plane};
+use crate::core::math::{Matrix4, Vector3};
+use crate::core::primitives::{BoundingBox3, Point3};
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 /// Plane representation for frustum culling
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]

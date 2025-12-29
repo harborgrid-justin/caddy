@@ -230,7 +230,7 @@ impl StlReader {
                 std::env::current_dir().unwrap().join("temp")
             );
             let file = File::open(path_ref)?;
-            let reader = BufReader::new(file);
+            let _reader = BufReader::new(file);
             self.read_ascii(reader)
         } else {
             // Binary format
@@ -421,11 +421,11 @@ impl StlWriter {
     pub fn write_file<P: AsRef<Path>>(&self, mesh: &StlMesh, path: P) -> StlResult<()> {
         if self.binary_format {
             let file = File::create(path)?;
-            let writer = BufWriter::new(file);
+            let _writer = BufWriter::new(file);
             self.write_binary(mesh, writer)
         } else {
             let file = File::create(path)?;
-            let writer = BufWriter::new(file);
+            let _writer = BufWriter::new(file);
             self.write_ascii(mesh, writer)
         }
     }
@@ -466,7 +466,7 @@ impl StlWriter {
     /// Write binary STL format
     pub fn write_binary<W: Write>(&self, mesh: &StlMesh, mut writer: W) -> StlResult<()> {
         // Write 80-byte header
-        let header = format!("Binary STL from CADDY: {}", mesh.name);
+        let _header = format!("Binary STL from CADDY: {}", mesh.name);
         let mut header_bytes = [0u8; 80];
         let header_len = header.len().min(80);
         header_bytes[0..header_len].copy_from_slice(&header.as_bytes()[0..header_len]);

@@ -17,7 +17,6 @@
 //! - Multi-threaded scaling: Near-linear up to 8 cores
 
 use serde::{Deserialize, Serialize};
-use std::io::{Read, Write};
 use thiserror::Error;
 
 // Module declarations

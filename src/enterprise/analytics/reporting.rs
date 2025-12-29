@@ -514,7 +514,7 @@ impl Reporter {
         let stats = StatisticalSummary::from_aggregator(agg, Some(window));
 
         Ok(format!(
-            r#"Metric: {}
+            r"Metric: {}
 Count: {}
 Mean: {:.2}
 Median: {:.2}
@@ -599,7 +599,7 @@ impl ReportTemplates {
                     "user_actions_total".to_string(),
                     "app_operations_total".to_string(),
                 ],
-                window: TimeWindow::Custom(2592000), // 30 days
+                window: TimeWindow::Custom(2_592_000), // 30 days
             })
             .include_charts(true)
     }

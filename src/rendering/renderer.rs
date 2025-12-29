@@ -123,7 +123,7 @@ impl Renderer {
 
         surface.configure(&device, &surface_config);
 
-        let context = RenderContext {
+        let _context = RenderContext {
             device: device.clone(),
             queue: queue.clone(),
             surface,
