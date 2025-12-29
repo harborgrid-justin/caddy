@@ -1,0 +1,1 @@
+{"version":3,"file":"FileCloud.d.ts","sourceRoot":"","sources":["../../src/files/FileCloud.tsx"],"names":[],"mappings":"AAKA,OAAO,KAA2C,MAAM,OAAO,CAAC;AAWhE,UAAU,cAAc;IACtB,QAAQ,EAAE,MAAM,CAAC;IACjB,OAAO,CAAC,EAAE,MAAM,IAAI,CAAC;IACrB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,SAAS,EAAE,KAAK,CAAC,EAAE,CAAC,cAAc,CAuZ9C,CAAC;AA8LF,eAAe,SAAS,CAAC"}

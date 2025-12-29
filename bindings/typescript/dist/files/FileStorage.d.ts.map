@@ -1,0 +1,1 @@
+{"version":3,"file":"FileStorage.d.ts","sourceRoot":"","sources":["../../src/files/FileStorage.tsx"],"names":[],"mappings":"AAKA,OAAO,KAA2C,MAAM,OAAO,CAAC;AAGhE,UAAU,gBAAgB;IACxB,QAAQ,EAAE,MAAM,CAAC;IACjB,SAAS,CAAC,EAAE,MAAM,IAAI,CAAC;IACvB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,CAsXlD,CAAC;AAEF,eAAe,WAAW,CAAC"}

@@ -338,6 +338,7 @@ export function useViewportControls({ viewportId, camera, canvas, config: config
                 }
             };
         }
+        return undefined;
     }, [config.enableDamping, applyDamping]);
     return {
         controlMode,

@@ -10,6 +10,7 @@ export const CompressionStats = ({ stats = null, showDetailed = true, refreshInt
             }, refreshInterval);
             return () => clearInterval(interval);
         }
+        return undefined;
     }, [refreshInterval]);
     const handleRefresh = () => {
         setMetrics(compressionService.getMetrics());
