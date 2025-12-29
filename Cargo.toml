@@ -1,6 +1,6 @@
 [package]
 name = "caddy"
-version = "0.2.0"
+version = "0.2.5"
 edition = "2021"
 authors = ["Caddy Team"]
 description = "CADDY - Enterprise Computer-Aided Design System"
@@ -56,11 +56,19 @@ reqwest = { version = "0.11", features = ["json"] }
 
 # Version handling
 semver = "1.0"
+dirs = "5.0"
 
 # Database utilities
 md5 = "0.7"
+sqlx = { version = "0.7", features = ["runtime-tokio-native-tls", "sqlite", "postgres", "chrono", "uuid", "migrate", "json"] }
+deadpool = "0.10"
+sea-query = { version = "0.30", features = ["backend-postgres", "backend-sqlite"] }
+rstar = "0.11" # R-tree spatial indexing
+sled = "0.34" # Embedded key-value store for caching
+lz4 = "1.24" # Compression for cache and backups
 
 # Cryptography for license management
+sha1 = "0.10"
 sha2 = "0.10"
 sha3 = "0.10"
 hmac = "0.12"
@@ -70,6 +78,8 @@ base32 = "0.4"
 base64 = "0.21"
 hex = "0.4"
 ring = "0.17"
+urlencoding = "2.1"
+flate2 = "1.0"
 
 # Enterprise features dependencies
 argon2 = "0.5"

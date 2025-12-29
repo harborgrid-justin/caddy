@@ -14,6 +14,9 @@
 //! - `tools`: Selection and manipulation tools
 //! - `dimensions`: Dimensioning and annotations
 //! - `constraints`: Parametric constraint solver
+//! - `compression`: Enterprise-grade compression algorithms
+//! - `analytics`: Analytics and telemetry system
+//! - `database`: Enterprise database layer with caching, replication, and sharding
 
 #![warn(missing_docs)]
 #![warn(clippy::all)]
@@ -53,6 +56,21 @@ pub mod plugins;
 
 // Enterprise features
 pub mod enterprise;
+
+// Viewport rendering system
+pub mod viewport;
+
+// Compression system
+pub mod compression;
+
+// Analytics and telemetry
+pub mod analytics;
+
+// Database layer
+pub mod database;
+
+// 3D modeling engine
+pub mod engine3d;
 
 // Re-export commonly used types
 pub use core::{

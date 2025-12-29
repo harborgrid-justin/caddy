@@ -55,6 +55,10 @@ pub mod operations;
 pub mod protocol;
 pub mod transport;
 pub mod permissions;
+pub mod crdt;
+pub mod sync_engine;
+pub mod versioning;
+pub mod conflict_resolver;
 
 // Re-export commonly used types
 pub use session::{
@@ -79,6 +83,21 @@ pub use transport::{
 };
 pub use permissions::{
     EditPermission, Permission, PermissionDelegation, PermissionManager, RegionLock, ViewMode,
+};
+pub use crdt::{
+    CADEntityCRDT, CRDTId, DocumentCRDT, DocumentSnapshot, GSet, LWWRegister,
+    LamportTimestamp, ORSet, TwoPhaseSet,
+};
+pub use sync_engine::{
+    SyncEngine, SyncEngineConfig, SyncEvent, SyncMessage, SyncState, SyncStatistics,
+};
+pub use versioning::{
+    AuthorInfo, Branch, BranchName, MergeResult, MergeStrategy, Version, VersionControl,
+    VersionDiff, VersionId,
+};
+pub use conflict_resolver::{
+    Conflict, ConflictResolution, ConflictResolver, ConflictResolverConfig, ConflictSeverity,
+    ConflictStatistics, ConflictType, ResolutionStrategy,
 };
 
 use thiserror::Error;
